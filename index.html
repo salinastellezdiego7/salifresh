@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SALIFRESH — Fresh Fruit, No Compromise</title>
+  <meta name="description" content="SALIFRESH: Fruta fresca a domicilio en Metepec y Toluca Centro. Cajas listas para tu semana. Pedidos por WhatsApp." />
+  <style>
+    :root{
+      --bg:#0f3b2e;          /* verde */
+      --bg2:#145244;         /* verde más claro */
+      --card:#0c2f25;        /* verde oscuro */
+      --gold:#d7b35f;        /* dorado */
+      --gold2:#f0d184;       /* dorado claro */
+      --text:#f3f5f4;
+      --muted:#cbd5d1;
+      --border: rgba(215,179,95,.22);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1000px 600px at 20% 10%, rgba(240,209,132,.12), transparent 55%),
+                  radial-gradient(900px 600px at 90% 30%, rgba(215,179,95,.10), transparent 50%),
+                  linear-gradient(180deg, var(--bg), #0a221b 70%);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1100px, 92vw); margin:0 auto}
+    .nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(10,34,27,.65);
+      border-bottom:1px solid rgba(215,179,95,.12);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.12em;
+    }
+    .mark{
+      width:38px; height:38px; border-radius:12px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(215,179,95,.25), rgba(240,209,132,.10));
+      border:1px solid rgba(215,179,95,.35);
+      box-shadow: var(--shadow);
+      font-weight:900;
+      color:var(--gold2);
+    }
+    .nav-links{display:flex; gap:18px; align-items:center; color:var(--muted); font-weight:600; font-size:14px}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(215,179,95,.45);
+      background: linear-gradient(135deg, rgba(215,179,95,.20), rgba(240,209,132,.12));
+      color:var(--text);
+      font-weight:800;
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      cursor:pointer;
+      transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05)}
+    .btn.secondary{
+      background: transparent;
+      border:1px solid rgba(203,213,209,.25);
+      color:var(--text);
+      box-shadow:none;
+    }
+
+    /* HERO */
+    .hero{padding:56px 0 28px}
+    .hero-grid{
+      display:grid; gap:26px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
+      background: rgba(215,179,95,.12);
+      border:1px solid rgba(215,179,95,.22);
+      color:var(--gold2);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4.2vw, 52px);
+      line-height:1.06;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height:1.6;
+      margin:0 0 18px;
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .stats{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:22px
+    }
+    .stat{
+      padding:14px 14px;
+      border-radius: var(--radius);
+      background: rgba(12,47,37,.55);
+      border:1px solid rgba(215,179,95,.18);
+    }
+    .stat b{display:block; font-size:16px; color:var(--gold2)}
+    .stat span{color:var(--muted); font-weight:600; font-size:13px}
+
+    .hero-card{
+      padding:20px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(20,82,68,.52), rgba(12,47,37,.62));
+      border:1px solid rgba(215,179,95,.22);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-80px -90px auto auto;
+      width:280px; height:280px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(240,209,132,.28), transparent 55%);
+      transform: rotate(20deg);
+      pointer-events:none;
+    }
+    .hero-card h3{margin:0 0 8px; letter-spacing:.02em}
+    .hero-card p{margin:0 0 14px; color:var(--muted); line-height:1.6}
+    .form{
+      display:grid; gap:10px;
+    }
+    .field{
+      display:grid; gap:6px;
+      font-size:13px; color:var(--muted); font-weight:700;
+    }
+    input, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(203,213,209,.22);
+      background: rgba(6,22,17,.45);
+      color:var(--text);
+      outline:none;
+      font-weight:700;
+    }
+    input::placeholder{color: rgba(203,213,209,.60)}
+    .small{font-size:12px; color: rgba(203,213,209,.75); line-height:1.4}
+
+    /* SECTIONS */
+    section{padding:34px 0}
+    .section-title{
+      display:flex; justify-content:space-between; align-items:end;
+      gap:14px; margin-bottom:14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing:-.02em;
+    }
+    .section-title p{margin:0; color:var(--muted); max-width:58ch}
+
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .card{
+      padding:18px;
+      border-radius: var(--radius);
+      background: rgba(12,47,37,.55);
+      border:1px solid rgba(215,179,95,.18);
+      box-shadow: 0 8px 18px rgba(0,0,0,.20);
+    }
+    .card h3{margin:0 0 6px}
+    .card p{margin:0; color:var(--muted); line-height:1.6}
+    .pill{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.06em;
+      color:var(--gold2);
+      border:1px solid rgba(215,179,95,.25);
+      background: rgba(215,179,95,.10);
+      margin-bottom:10px;
+    }
+
+    /* PRODUCTS */
+    .products{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .price{
+      font-size:26px; font-weight:900; letter-spacing:-.02em; color:var(--gold2);
+      margin:6px 0 10px;
+    }
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.7}
+    .product-actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+
+    /* FAQ */
+    details{
+      border-radius: var(--radius);
+      background: rgba(12,47,37,.55);
+      border:1px solid rgba(215,179,95,.18);
+      padding:14px 16px;
+    }
+    details + details{margin-top:10px}
+    summary{cursor:pointer; font-weight:900}
+    details p{margin:10px 0 0; color:var(--muted); line-height:1.6}
+
+    /* FOOTER */
+    footer{
+      padding:28px 0 42px;
+      border-top:1px solid rgba(215,179,95,.12);
+      color:var(--muted);
+    }
+    .footer-grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:start;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .stats{grid-template-columns: 1fr; }
+      .grid-3{grid-template-columns:1fr}
+      .products{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="mark">S</div>
+        <div>
+          <div style="font-size:14px; color:var(--gold2);">SALIFRESH</div>
+          <div style="font-size:12px; color:var(--muted); font-weight:700;">Fresh Fruit, No Compromise</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#cajas">Cajas</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#zonas">Zonas</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn" id="ctaTop" href="#">Pedir por WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">🚚 Entregas en Metepec y Toluca Centro</div>
+          <h1>Fruta fresca, lista para tu semana.</h1>
+          <p class="sub">
+            Cajas armadas con selección premium. Compra fácil por WhatsApp y recibe en tu casa u oficina.
+            Sin filas. Sin vueltas. <b>Fresh Fruit, No Compromise.</b>
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" id="ctaHero" href="#">Pedir ahora</a>
+            <a class="btn secondary" href="#cajas">Ver cajas</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <b>Selección premium</b>
+              <span>Calidad y frescura que se nota</span>
+            </div>
+            <div class="stat">
+              <b>Rápido y simple</b>
+              <span>Pedido por WhatsApp en 1 minuto</span>
+            </div>
+            <div class="stat">
+              <b>Para hogar o negocio</b>
+              <span>B2C y B2B (oficinas, cafés, gimnasios)</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" id="pedido">
+          <h3>Arma tu pedido en 30 segundos</h3>
+          <p>Llena esto y te abrimos WhatsApp con el mensaje listo.</p>
+
+          <div class="form">
+            <label class="field">Tu nombre
+              <input id="name" placeholder="Ej. Diego" />
+            </label>
+
+            <label class="field">Zona de entrega
+              <select id="zone">
+                <option value="Metepec">Metepec</option>
+                <option value="Toluca Centro">Toluca Centro</option>
+              </select>
+            </label>
+
+            <label class="field">Caja
+              <select id="box">
+                <option value="Caja Económica">Caja Económica</option>
+                <option value="Caja Healthy">Caja Healthy</option>
+                <option value="Caja Premium">Caja Premium</option>
+              </select>
+            </label>
+
+            <label class="field">Dirección (opcional)
+              <input id="address" placeholder="Calle, colonia (opcional)" />
+            </label>
+
+            <button class="btn" id="sendBtn" type="button">Enviar pedido por WhatsApp</button>
+            <div class="small">* La entrega es gratis a partir de $199. Envío estándar: $25.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="como">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cómo funciona</h2>
+          <p>Operación simple para que la experiencia sea rápida y premium desde el día 1.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="pill">PASO 1</div>
+            <h3>Elige tu caja</h3>
+            <p>Escoge Económica, Healthy o Premium (y si eres negocio, armamos volumen).</p>
+          </div>
+          <div class="card">
+            <div class="pill">PASO 2</div>
+            <h3>Pide por WhatsApp</h3>
+            <p>Te confirmamos disponibilidad, total, horario y forma de pago.</p>
+          </div>
+          <div class="card">
+            <div class="pill">PASO 3</div>
+            <h3>Recibe fresco</h3>
+            <p>Entregamos en Metepec y Toluca Centro con selección cuidada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cajas">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cajas SALIFRESH</h2>
+          <p>Precios sugeridos (ajústalos cuando tengas tus costos exactos). Enfocadas en rotación y margen.</p>
+        </div>
+
+        <div class="products">
+          <div class="card">
+            <div class="pill">ECONÓMICA</div>
+            <h3>Caja Familiar</h3>
+            <div class="price">$149 – $179</div>
+            <ul class="list">
+              <li>Naranja</li>
+              <li>Plátano</li>
+              <li>Manzana</li>
+              <li>Sandía o melón</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn secondary" href="#pedido" data-pick="Caja Económica">Elegir</a>
+              <a class="btn" href="#" data-order="Caja Económica">Pedir</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">HEALTHY</div>
+            <h3>Caja Activa</h3>
+            <div class="price">$189 – $229</div>
+            <ul class="list">
+              <li>Manzana</li>
+              <li>Uva</li>
+              <li>Piña</li>
+              <li>Plátano</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn secondary" href="#pedido" data-pick="Caja Healthy">Elegir</a>
+              <a class="btn" href="#" data-order="Caja Healthy">Pedir</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">PREMIUM</div>
+            <h3>Caja Selección</h3>
+            <div class="price">$249 – $299</div>
+            <ul class="list">
+              <li>Manzana</li>
+              <li>Pera</li>
+              <li>Uva</li>
+              <li>Piña</li>
+              <li>Melón o papaya</li>
+            </ul>
+            <div class="product-actions">
+              <a class="btn secondary" href="#pedido" data-pick="Caja Premium">Elegir</a>
+              <a class="btn" href="#" data-order="Caja Premium">Pedir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zonas">
+      <div class="container">
+        <div class="section-title">
+          <h2>Zonas de entrega</h2>
+          <p>Arrancamos con rutas cortas para asegurar puntualidad y calidad.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="pill">METEPEC</div>
+            <h3>Zona residencial</h3>
+            <p>Ideal para clientes recurrentes, familias y suscripciones semanales.</p>
+          </div>
+          <div class="card">
+            <div class="pill">TOLUCA</div>
+            <h3>Centro / oficinas</h3>
+            <p>Perfecto para B2B: oficinas, cafés, gimnasios, restaurantes.</p>
+          </div>
+          <div class="card">
+            <div class="pill">ENVÍO</div>
+            <h3>Política simple</h3>
+            <p>Entrega gratis desde $199. Envío estándar $25. Horarios programados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>Preguntas frecuentes</h2>
+          <p>Transparencia total: así se construye confianza rápido (clave para crecer agresivo).</p>
+        </div>
+
+        <details>
+          <summary>¿Puedo pedir fruta por kilo en lugar de caja?</summary>
+          <p>Sí. Mándanos tu lista por WhatsApp y te cotizamos. Las cajas son la opción más rápida y conveniente.</p>
+        </details>
+        <details>
+          <summary>¿Tienen suscripción semanal?</summary>
+          <p>Podemos activarla desde la semana 2–3. Te reservamos tu caja y solo confirmas cada semana.</p>
+        </details>
+        <details>
+          <summary>¿Venden a negocios (B2B)?</summary>
+          <p>Sí. Ofrecemos precios por volumen y entregas programadas para cafeterías, oficinas, restaurantes y gimnasios.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si una fruta no sale buena?</summary>
+          <p>Te la reemplazamos. La idea de SALIFRESH es que compres “sin compromiso”.</p>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+          <div>
+            <div class="pill">LISTO PARA PEDIR</div>
+            <h3 style="margin:0 0 6px;">Empieza hoy con SALIFRESH</h3>
+            <p style="margin:0; color:var(--muted);">Te confirmamos disponibilidad y horario por WhatsApp.</p>
+          </div>
+          <a class="btn" id="ctaBottom" href="#">Pedir por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="color:var(--gold2); font-weight:900; letter-spacing:.12em;">SALIFRESH</div>
+        <div style="margin-top:6px;">Fresh Fruit, No Compromise</div>
+        <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+          Metepec • Toluca Centro<br/>
+          Hecho para crecer: B2C + B2B
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900; color:var(--text);">Contacto</div>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn secondary" id="ctaFooter" href="#">WhatsApp</a>
+          <a class="btn secondary" href="#pedido">Hacer pedido</a>
+        </div>
+        <div style="margin-top:12px; font-size:12px; color:rgba(203,213,209,.75);">
+          © <span id="year"></span> SALIFRESH. Todos los derechos reservados.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ✅ CAMBIA ESTO:
+    const WHATSAPP_NUMBER = "5210000000000"; // ejemplo: 5217221234567 (52 + tu número)
+
+    function waLink(message){
+      const base = "https://wa.me/" + WHATSAPP_NUMBER;
+      return base + "?text=" + encodeURIComponent(message);
+    }
+
+    function buildMessage(boxName){
+      const name = document.getElementById("name").value.trim();
+      const zone = document.getElementById("zone").value;
+      const box = boxName || document.getElementById("box").value;
+      const address = document.getElementById("address").value.trim();
+
+      let msg = `Hola SALIFRESH 👋\n\n`;
+      if(name) msg += `Soy ${name}.\n`;
+      msg += `Quiero pedir: *${box}*\n`;
+      msg += `Zona: *${zone}*\n`;
+      if(address) msg += `Dirección/Referencia: ${address}\n`;
+      msg += `\n¿Me confirmas disponibilidad, total y horario de entrega?`;
+      return msg;
+    }
+
+    function attachCTA(id, boxName){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener("click", (e)=>{
+        e.preventDefault();
+        window.open(waLink(buildMessage(boxName)), "_blank");
+      });
+    }
+
+    // CTAs principales
+    attachCTA("ctaTop");
+    attachCTA("ctaHero");
+    attachCTA("ctaBottom");
+    attachCTA("ctaFooter");
+
+    // Botón del formulario
+    document.getElementById("sendBtn").addEventListener("click", ()=>{
+      window.open(waLink(buildMessage()), "_blank");
+    });
+
+    // Botones “Pedir” en tarjetas
+    document.querySelectorAll("[data-order]").forEach(btn=>{
+      btn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        const boxName = btn.getAttribute("data-order");
+        window.open(waLink(buildMessage(boxName)), "_blank");
+      });
+    });
+
+    // Botones “Elegir” setean el select y bajan al formulario
+    document.querySelectorAll("[data-pick]").forEach(btn=>{
+      btn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        const boxName = btn.getAttribute("data-pick");
+        document.getElementById("box").value = boxName;
+        document.getElementById("pedido").scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
