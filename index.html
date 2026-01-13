@@ -35,6 +35,10 @@
     a{color:inherit; text-decoration:none}
     .container{width:min(1120px, 92vw); margin:0 auto}
 
+    /* Accent text */
+    .gold{ color: var(--gold); font-weight:1000; }
+    .green{ color: var(--green); font-weight:1000; }
+
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:20;
@@ -54,8 +58,13 @@
       display:grid; place-items:center; overflow:hidden;
       background: #fff;
     }
-    .brand .name{font-weight:950; letter-spacing:.12em; color: var(--green)}
-    .brand .tag{font-size:12px; color: var(--muted); font-weight:750}
+    .brand .name{
+      font-weight: 1000;
+      letter-spacing: .18em;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+    .brand .tag{font-size:12px; color: var(--muted); font-weight:850}
 
     .nav-links{display:flex; gap:16px; color: var(--muted); font-weight:750; font-size:14px}
     .nav-links a:hover{color: var(--ink)}
@@ -79,6 +88,7 @@
       border:1px solid var(--border);
       color: var(--ink);
     }
+    .btn.ghost{background:#fff; color: var(--green); border:1px solid rgba(31,107,79,.18);}
 
     /* HERO */
     .hero{
@@ -160,6 +170,7 @@
       margin-bottom:10px;
     }
 
+    /* Products */
     .products{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     .card{
       border-radius: var(--radius);
@@ -172,7 +183,34 @@
     .price{font-size:26px; font-weight:1000; color: var(--green2); margin:6px 0 10px}
     ul.list{margin:0; padding-left:18px; color: var(--muted); line-height:1.7}
     .product-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn.ghost{background:#fff; color: var(--green); border:1px solid rgba(31,107,79,.18);}
+
+    /* Boxes: green+gold accents */
+    #cajas {
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(31,107,79,.10), transparent 60%),
+        radial-gradient(700px 420px at 90% 20%, rgba(215,179,95,.14), transparent 55%),
+        linear-gradient(180deg, #ffffff, #ffffff);
+    }
+    #cajas .card{
+      background:
+        linear-gradient(180deg, rgba(31,107,79,.06), rgba(255,255,255,1) 55%);
+      border: 1px solid rgba(31,107,79,.14);
+      position: relative;
+      overflow: hidden;
+    }
+    #cajas .card::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:4px;
+      background: linear-gradient(90deg, rgba(31,107,79,.95), rgba(215,179,95,.95));
+    }
+    #cajas .price{ color: var(--green); }
+    #cajas .pill{
+      border:1px solid rgba(215,179,95,.45);
+      background: rgba(215,179,95,.18);
+      color:#6a4e12;
+    }
 
     /* BUILDER */
     .builder{display:grid; grid-template-columns: .92fr 1.08fr; gap:14px; align-items:start}
@@ -199,9 +237,21 @@
       display:grid; gap:8px;
       background:#fff
     }
-    .item-top{display:flex; justify-content:space-between; gap:10px; align-items:start}
+    .item-top{display:flex; justify-content:space-between; gap:10px; align-items:center}
     .item b{color: var(--ink)}
     .item small{color: var(--muted); font-weight:850}
+
+    .item-left{display:flex; gap:10px; align-items:center}
+
+    .fruitIcon{
+      width:40px; height:40px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(31,107,79,.08), rgba(215,179,95,.10));
+      border: 1px solid rgba(31,107,79,.12);
+      flex: 0 0 40px;
+      overflow:hidden;
+    }
 
     .qty{display:flex; align-items:center; gap:8px}
     .qty button{
@@ -285,7 +335,7 @@
         </div>
         <div>
           <div class="name">SALIFRESH</div>
-          <div class="tag">Fresh Fruit, No Compromise</div>
+          <div class="tag">Fresh Fruit, <span class="gold">No Compromise</span></div>
         </div>
       </div>
 
@@ -305,10 +355,10 @@
       <div class="container hero-grid">
         <div>
           <div class="badge">🚚 Metepec y Toluca Centro</div>
-          <h1>Fruta fresca, selección premium.</h1>
+          <h1>Fruta fresca, selección <span class="gold">premium</span>.</h1>
           <p class="sub">
-            Boxes listas y opción premium personalizable para elegir productos y kilos.
-            <b>Para hogar o negocio.</b>
+            Boxes listas y opción <span class="gold">premium personalizable</span> para elegir productos y kilos.
+            <b>Para <span class="gold">hogar</span> o <span class="gold">negocio</span>.</b>
           </p>
 
           <div class="hero-actions">
@@ -317,7 +367,7 @@
           </div>
 
           <div class="stats">
-            <div class="stat"><b>Selección premium</b><span>Calidad y frescura</span></div>
+            <div class="stat"><b>Selección <span class="gold">premium</span></b><span>Calidad y frescura</span></div>
             <div class="stat"><b>Simple</b><span>Pedido por WhatsApp</span></div>
             <div class="stat"><b>Hogar o negocio</b><span>Entregas programadas</span></div>
           </div>
@@ -358,19 +408,18 @@
     <section class="light" id="cajas">
       <div class="container">
         <div class="section-title">
-          <div><h2>Boxes</h2></div>
+          <div><h2><span class="gold">Boxes</span></h2></div>
         </div>
 
         <div class="products">
           <div class="card">
             <div class="pill">ESENCIAL</div>
-            <h3>Basic Box</h3>
+            <h3>Box Esencial</h3>
             <div class="price">$229</div>
             <ul class="list">
               <li>Plátano</li>
               <li>Manzana</li>
-              <li>Papaya</li>
-              <li>Piña</li>
+              <li>Mandarina</li>
               <li>Melón (cambiable)</li>
             </ul>
             <div class="product-actions">
@@ -398,7 +447,7 @@
 
           <div class="card">
             <div class="pill">PREMIUM</div>
-            <h3>Premium Box</h3>
+            <h3><span class="gold">Premium</span> Personalizable</h3>
             <div class="price">Tú eliges</div>
             <ul class="list">
               <li>Escoge productos</li>
@@ -417,7 +466,7 @@
     <section class="light alt" id="arma">
       <div class="container">
         <div class="section-title">
-          <div><h2>Premium Personalizable</h2></div>
+          <div><h2>Premium <span class="gold">Personalizable</span></h2></div>
         </div>
 
         <div class="builder">
@@ -439,7 +488,7 @@
               <div class="row"><div>Peso objetivo</div><span id="sumTarget">—</span></div>
               <div class="row"><div>Peso seleccionado</div><span id="sumWeight">0 kg</span></div>
               <div class="row"><div>Base</div><span id="sumBase">$0</span></div>
-              <div class="row"><div>Extras premium</div><span id="sumExtras">$0</span></div>
+              <div class="row"><div>Extras <span class="gold">premium</span></div><span id="sumExtras">$0</span></div>
               <hr style="border:none; border-top:1px solid var(--border)">
 
               <div class="row" style="font-size:18px"><div>Total estimado</div><span id="sumTotal">$0</span></div>
@@ -458,20 +507,20 @@
     <section id="zonas">
       <div class="container">
         <div class="section-title">
-          <div><h2>Zonas de entrega</h2></div>
+          <div><h2>Zonas de <span class="gold">entrega</span></h2></div>
         </div>
 
         <div class="grid-3">
           <div class="zoneCard"><b>Toluca Centro</b><span>Disponible</span></div>
           <div class="zoneCard"><b>Metepec</b><span>Disponible</span></div>
-          <div class="zoneCard"><b>Política simple</b><span>Gratis desde $299 • Envío $25</span></div>
+          <div class="zoneCard"><b>Política simple</b><span><span class="gold">Gratis</span> desde $299 • Envío $25</span></div>
         </div>
       </div>
     </section>
 
     <section class="light" id="faq">
       <div class="container">
-        <div class="section-title"><div><h2>FAQ</h2></div></div>
+        <div class="section-title"><div><h2><span class="gold">FAQ</span></h2></div></div>
         <details><summary>¿Puedo cambiar una fruta dentro de un box?</summary><p>Sí. Si no te gusta un producto (por ejemplo melón), lo puedes cambiar por una opción disponible del mismo grupo.</p></details>
         <details><summary>¿Cómo manejan frutas de temporada?</summary><p>Al confirmar por WhatsApp te decimos qué está disponible hoy.</p></details>
         <details><summary>¿Qué pasa si una fruta no sale buena?</summary><p>Te ayudamos con reemplazo. Queremos que compres con confianza.</p></details>
@@ -575,7 +624,6 @@
     document.getElementById("goPremiumBuilder").addEventListener("click", (e)=>{
       e.preventDefault();
       document.getElementById("arma").scrollIntoView({behavior:"smooth", block:"start"});
-      // Optionally default to L
       setSizeById("L");
     });
     document.getElementById("orderPremiumBuilder").addEventListener("click", (e)=>{
@@ -584,14 +632,14 @@
       setSizeById("L");
     });
 
-    // ==== Premium Personalizable builder (editable) ====
+    // ==== Premium Personalizable builder ====
     const sizes = [
       { id:"S", label:"Box S", targetKg:5, base:229 },
       { id:"M", label:"Box M", targetKg:8, base:329 },
       { id:"L", label:"Box L", targetKg:12, base:599 },
     ];
 
-    // ✅ Edit inventory here (available: true/false)
+    // ✅ Inventory
     const inventory = [
       { key:"platano", name:"Plátano", unit:"1 kg", weightKg:1.0, premium:false, extra:0, available:true },
       { key:"mandarina", name:"Mandarina", unit:"1 kg", weightKg:1.0, premium:false, extra:0, available:true },
@@ -608,6 +656,92 @@
       { key:"blueberry", name:"Blueberry", unit:"1 domo", weightKg:0.17, premium:true, extra:40, available:true },
       { key:"frambuesa", name:"Frambuesa", unit:"1 domo", weightKg:0.17, premium:true, extra:45, available:true },
     ];
+
+    // Icons (inline SVG, no external images needed)
+    const iconMap = {
+      platano: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 18c10 20 24 30 32 32-6 6-18 6-28-4S10 24 18 18Z" fill="rgba(215,179,95,.85)"/>
+          <path d="M18 18c10 20 24 30 32 32" stroke="rgba(31,107,79,.65)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      mandarina: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="34" r="16" fill="rgba(240,209,132,.85)"/>
+          <path d="M32 16c6 2 10 6 12 10-6 1-12-2-12-10Z" fill="rgba(31,107,79,.55)"/>
+          <circle cx="26" cy="32" r="2" fill="rgba(31,107,79,.25)"/>
+          <circle cx="36" cy="38" r="2" fill="rgba(31,107,79,.25)"/>
+        </svg>`,
+      manzana: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 18c8 0 16 6 16 18S40 56 32 56 16 48 16 36s8-18 16-18Z" fill="rgba(31,107,79,.35)"/>
+          <path d="M30 16c2-6 8-8 14-6-2 6-8 8-14 6Z" fill="rgba(31,107,79,.65)"/>
+          <path d="M32 18c-4 2-7 6-7 10" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      melon: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 42c0-14 10-24 24-24 2 0 4 0 6 .5C42 12 34 10 28 12 16 16 10 30 14 42" fill="rgba(31,107,79,.18)"/>
+          <path d="M18 42c2 8 8 14 16 14 10 0 18-8 18-18 0-8-5-15-12-17" fill="rgba(240,209,132,.75)"/>
+          <path d="M22 44c6 6 12 8 18 6" stroke="rgba(31,107,79,.55)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      pera: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M36 14c-3 2-4 6-2 10 6 6 12 8 12 18 0 10-8 18-18 18S10 52 10 42c0-10 8-14 14-18 4-3 6-8 4-12" fill="rgba(31,107,79,.28)"/>
+          <path d="M34 14c2-4 6-6 12-4-2 6-6 8-12 4Z" fill="rgba(31,107,79,.65)"/>
+        </svg>`,
+      uva_roja: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="34" r="8" fill="rgba(215,179,95,.55)"/>
+          <circle cx="38" cy="34" r="8" fill="rgba(215,179,95,.55)"/>
+          <circle cx="32" cy="44" r="8" fill="rgba(215,179,95,.55)"/>
+          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
+          <path d="M32 18v10" stroke="rgba(31,107,79,.55)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      uva_verde: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="34" r="8" fill="rgba(31,107,79,.25)"/>
+          <circle cx="38" cy="34" r="8" fill="rgba(31,107,79,.25)"/>
+          <circle cx="32" cy="44" r="8" fill="rgba(31,107,79,.25)"/>
+          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
+          <path d="M32 18v10" stroke="rgba(31,107,79,.55)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      kiwi: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="34" r="16" fill="rgba(31,107,79,.22)"/>
+          <circle cx="32" cy="34" r="10" fill="rgba(240,209,132,.45)"/>
+          <circle cx="32" cy="34" r="3" fill="rgba(31,107,79,.35)"/>
+          <path d="M24 34h16M32 26v16" stroke="rgba(31,107,79,.25)" stroke-width="2" stroke-linecap="round"/>
+        </svg>`,
+      fresa: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 30c0-10 6-16 14-16s14 6 14 16c0 14-10 26-14 26S18 44 18 30Z" fill="rgba(215,179,95,.40)"/>
+          <path d="M24 14c4 2 8 2 16 0-2 8-6 10-8 10s-6-2-8-10Z" fill="rgba(31,107,79,.60)"/>
+          <circle cx="28" cy="34" r="1.6" fill="rgba(31,107,79,.35)"/>
+          <circle cx="36" cy="38" r="1.6" fill="rgba(31,107,79,.35)"/>
+          <circle cx="34" cy="30" r="1.6" fill="rgba(31,107,79,.35)"/>
+        </svg>`,
+      zarzamora: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="34" r="6" fill="rgba(31,107,79,.25)"/>
+          <circle cx="36" cy="34" r="6" fill="rgba(31,107,79,.25)"/>
+          <circle cx="32" cy="42" r="6" fill="rgba(31,107,79,.25)"/>
+          <circle cx="32" cy="26" r="6" fill="rgba(31,107,79,.25)"/>
+          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
+        </svg>`,
+      blueberry: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="36" r="14" fill="rgba(31,107,79,.22)"/>
+          <path d="M24 26c2 6 6 8 8 8s6-2 8-8" stroke="rgba(215,179,95,.65)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="38" r="1.5" fill="rgba(255,255,255,.55)"/>
+        </svg>`,
+      frambuesa: `
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="34" r="6" fill="rgba(215,179,95,.35)"/>
+          <circle cx="38" cy="34" r="6" fill="rgba(215,179,95,.35)"/>
+          <circle cx="32" cy="42" r="6" fill="rgba(215,179,95,.35)"/>
+          <circle cx="32" cy="26" r="6" fill="rgba(215,179,95,.35)"/>
+          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
+        </svg>`
+    };
 
     const state = { size: sizes[0], qty: Object.fromEntries(inventory.map(i => [i.key, 0])) };
     const $ = (id)=>document.getElementById(id);
@@ -643,11 +777,21 @@
         el.className = "item";
         const avail = item.available ? "" : " (no disponible)";
         const priceTag = item.premium ? `+${money(item.extra)} extra` : "incluido";
+        const icon = iconMap[item.key] || `
+          <svg viewBox="0 0 64 64" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="16" fill="rgba(31,107,79,.12)"/>
+            <path d="M24 34h16" stroke="rgba(215,179,95,.75)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        `;
+
         el.innerHTML = `
           <div class="item-top">
-            <div>
-              <b>${item.name}${avail}</b><br/>
-              <small>${item.unit} • ${priceTag}</small>
+            <div class="item-left">
+              <div class="fruitIcon">${icon}</div>
+              <div>
+                <b>${item.name}${avail}</b><br/>
+                <small>${item.unit} • ${priceTag}</small>
+              </div>
             </div>
             <div class="qty">
               <button ${item.available ? "" : "disabled"} data-k="${item.key}" data-d="-1">−</button>
@@ -733,16 +877,20 @@
       return msg;
     }
 
-    document.getElementById("sendCustom").addEventListener("click", ()=>{
-      window.open(waLink(customMessage()), "_blank");
-    });
-
-    // Init
-    renderSizes();
-    renderInventory();
-    renderSummary();
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // WhatsApp CTAs
+    function attachCTA(id, kind=null){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener("click", (e)=>{
+        e.preventDefault();
+        const pick = kind || document.getElementById("quickPick").value;
+        if(pick === "Premium Personalizable"){
+          document.getElementById("arma").scrollIntoView({behavior:"smooth", block:"start"});
+          return;
+        }
+        window.open(waLink(basicMessage(pick)), "_blank");
+      });
+    }
   </script>
 </body>
 </html>
-
