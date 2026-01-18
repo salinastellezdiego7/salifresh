@@ -74,16 +74,13 @@
       color: #fff;
     }
 
-    .btn-primary:hover {
-      background: #256628;
-    }
-
     .btn-outline {
       border: 1px solid var(--green);
       color: var(--green);
       margin-left: 15px;
     }
 
+    /* HERO */
     .hero {
       padding: 110px 0;
     }
@@ -117,6 +114,7 @@
       background: url("https://images.unsplash.com/photo-1573246123716-6b1782bfc499") center/cover no-repeat;
     }
 
+    /* TITLES */
     .section-title {
       text-align: center;
       margin-bottom: 60px;
@@ -134,8 +132,11 @@
     .section-title p {
       color: var(--muted);
       font-size: 0.95rem;
+      max-width: 520px;
+      margin: 15px auto 0;
     }
 
+    /* BOXES */
     .boxes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -166,15 +167,53 @@
       margin: 25px 0;
     }
 
+    /* PERSONALIZACION */
+    .custom {
+      background: var(--green-soft);
+      border-radius: 30px;
+      padding: 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .custom ul {
+      list-style: none;
+      margin-top: 25px;
+    }
+
+    .custom li {
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    .fruits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .fruit {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+      background: #fff;
+    }
+
+    /* ZONAS */
     .zones {
       display: flex;
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
+    /* CTA */
     .cta {
       background: var(--green-soft);
       text-align: center;
@@ -191,7 +230,7 @@
     }
 
     @media(max-width: 900px) {
-      .hero-grid {
+      .hero-grid, .custom {
         grid-template-columns: 1fr;
       }
       .hero h1 {
@@ -214,7 +253,7 @@
   <div class="container hero-grid">
     <div>
       <h1>Fruta fresca <span>a domicilio</span></h1>
-      <p>Seleccionamos fruta de calidad, armamos tu box y lo llevamos directo a tu puerta. Simple, fresco y bien hecho.</p>
+      <p>Seleccionamos fruta de calidad y armamos tu box según tu estilo de vida. Fresco, simple y bien hecho.</p>
       <a href="#boxes" class="btn btn-primary">Ver boxes</a>
       <a href="https://wa.me/5210000000000" class="btn btn-outline">WhatsApp</a>
     </div>
@@ -226,7 +265,7 @@
   <div class="container">
     <div class="section-title">
       <h2>Nuestros <span>boxes</span></h2>
-      <p>Opciones claras, sin complicaciones</p>
+      <p>Opciones claras, con la flexibilidad que necesitas.</p>
     </div>
 
     <div class="boxes">
@@ -249,10 +288,39 @@
       <div class="box">
         <span class="tag">Premium</span>
         <h3>Box Premium Personalizable</h3>
-        <p>Elige las frutas que quieras, en las cantidades que prefieras.</p>
+        <p>Elige las frutas y cantidades que tú quieras.</p>
         <div class="price">Desde $499 MXN</div>
-        <a href="#" class="btn btn-primary">Personalizar</a>
+        <a href="#personaliza" class="btn btn-primary">Personalizar</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="personaliza">
+  <div class="container custom">
+    <div>
+      <h2>Personaliza tu <span style="color:var(--gold)">Box Premium</span></h2>
+      <p>Arma tu box a tu gusto. Tú eliges, nosotros seleccionamos lo mejor.</p>
+
+      <ul>
+        <li>✔️ Elige las frutas que prefieras</li>
+        <li>✔️ Define cantidades según tu consumo</li>
+        <li>✔️ Confirmación directa por WhatsApp</li>
+        <li>✔️ Precio según selección</li>
+      </ul>
+
+      <a href="https://wa.me/5210000000000" class="btn btn-primary" style="margin-top:30px">Personalizar por WhatsApp</a>
+    </div>
+
+    <div class="fruits">
+      <div class="fruit">🍎 Manzana</div>
+      <div class="fruit">🍌 Plátano</div>
+      <div class="fruit">🍊 Naranja</div>
+      <div class="fruit">🍓 Fresa</div>
+      <div class="fruit">🥭 Mango</div>
+      <div class="fruit">🍍 Piña</div>
+      <div class="fruit">🥝 Kiwi</div>
+      <div class="fruit">🍐 Pera</div>
     </div>
   </div>
 </section>
@@ -274,7 +342,7 @@
   <div class="container">
     <div class="cta">
       <h2>Empieza a comer mejor sin perder tiempo</h2>
-      <a href="#" class="btn btn-primary">Pedir ahora</a>
+      <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir ahora</a>
     </div>
   </div>
 </section>
