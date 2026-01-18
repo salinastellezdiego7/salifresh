@@ -1,354 +1,302 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-MX">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Salifresh | Fruta fresca a domicilio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SALIFRESH — Fresh Fruit, No Compromise</title>
+  <meta name="description" content="SALIFRESH: Fruta fresca a domicilio en Metepec y Toluca. Boxes y Premium personalizable." />
 
   <style>
-    :root {
-      --green: #2f7d32;
-      --green-soft: #eef7f0;
-      --gold: #c9a24d;
-      --text: #1f1f1f;
-      --muted: #6b6b6b;
-      --border: #eaeaea;
+    :root{
+      --green:#1f6b4f;
+      --green2:#2a8a64;
+      --gold:#d7b35f;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --paper2:#f6f7f7;
+      --border: rgba(15,23,42,.10);
+      --shadow: 0 16px 36px rgba(2,6,23,.10);
+      --radius:18px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--paper);
+      color:var(--ink);
     }
 
-    body {
-      background: #fff;
-      color: var(--text);
-      line-height: 1.6;
-    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92vw);margin:0 auto}
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-    }
+    .gold{color:var(--gold);font-weight:900}
+    .green{color:var(--green);font-weight:900}
 
-    section {
-      padding: 90px 0;
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:10;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border)
     }
-
-    header {
-      padding: 25px 0;
-      border-bottom: 1px solid var(--border);
+    .nav-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 0
     }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .brand{font-weight:900;letter-spacing:.18em;color:var(--green)}
+    .btn{
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid rgba(31,107,79,.25);
+      background:#fff;
+      cursor:pointer
     }
-
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    .btn {
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .btn-outline {
-      border: 1px solid var(--green);
-      color: var(--green);
-      margin-left: 15px;
+    .btn.dark{
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff
     }
 
     /* HERO */
-    .hero {
-      padding: 110px 0;
+    .hero{
+      padding:70px 0 40px;
+      background:
+        radial-gradient(800px 400px at 15% 10%, rgba(215,179,95,.25), transparent 55%),
+        radial-gradient(700px 420px at 90% 20%, rgba(31,107,79,.18), transparent 55%);
     }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: center;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px
     }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 500;
-      margin-bottom: 20px;
+    h1{
+      font-size:clamp(34px,4.5vw,56px);
+      line-height:1.05;
+      margin:0 0 14px
     }
-
-    .hero h1 span {
-      color: var(--green);
-    }
-
-    .hero p {
-      max-width: 480px;
-      color: var(--muted);
-      margin-bottom: 35px;
-    }
-
-    .hero-image {
-      height: 420px;
-      border-radius: 24px;
-      background: url("https://images.unsplash.com/photo-1573246123716-6b1782bfc499") center/cover no-repeat;
-    }
-
-    /* TITLES */
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-title h2 {
-      font-size: 2.2rem;
-      font-weight: 500;
-    }
-
-    .section-title span {
-      color: var(--gold);
-    }
-
-    .section-title p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 520px;
-      margin: 15px auto 0;
+    .sub{
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:20px;
+      font-size:17px
     }
 
     /* BOXES */
-    .boxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 35px;
+    section{padding:40px 0}
+    .section-title h2{
+      font-size:32px;
+      margin:0 0 20px
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden
+    }
+    .card::before{
+      content:"";
+      position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--green),var(--gold))
+    }
+    .price{
+      font-size:26px;
+      font-weight:900;
+      color:var(--green);
+      margin:10px 0
+    }
+    ul{padding-left:18px;color:var(--muted)}
+    .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+
+    /* BUILDER */
+    .builder{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px
+    }
+    .panel{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px
+    }
+    .sizes{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(31,107,79,.25);
+      font-weight:900;
+      cursor:pointer;
+      color:var(--green)
+    }
+    .chip.active{
+      background:rgba(31,107,79,.08);
+      box-shadow:0 10px 18px rgba(2,6,23,.08)
+    }
+    .inventory{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:14px
+    }
+    .item{
+      border:1px solid rgba(31,107,79,.18);
+      border-radius:14px;
+      padding:12px
+    }
+    .qty{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:6px
+    }
+    .qty button{
+      width:32px;height:32px;
+      border-radius:10px;
+      border:1px solid rgba(31,107,79,.25);
+      background:#fff;
+      font-weight:900;
+      color:var(--green);
+      cursor:pointer
     }
 
-    .box {
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 35px;
-      transition: 0.3s;
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--border);
+      padding:30px 0;
+      margin-top:40px;
+      color:var(--muted)
     }
 
-    .box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
-
-    .tag {
-      font-size: 0.8rem;
-      color: var(--gold);
-      margin-bottom: 15px;
-      display: inline-block;
-    }
-
-    .price {
-      font-size: 1.4rem;
-      margin: 25px 0;
-    }
-
-    /* PERSONALIZACION */
-    .custom {
-      background: var(--green-soft);
-      border-radius: 30px;
-      padding: 70px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .custom ul {
-      list-style: none;
-      margin-top: 25px;
-    }
-
-    .custom li {
-      margin-bottom: 12px;
-      color: var(--muted);
-    }
-
-    .fruits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .fruit {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      text-align: center;
-      background: #fff;
-    }
-
-    /* ZONAS */
-    .zones {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      color: var(--muted);
-    }
-
-    /* CTA */
-    .cta {
-      background: var(--green-soft);
-      text-align: center;
-      padding: 90px 20px;
-      border-radius: 30px;
-    }
-
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    @media(max-width: 900px) {
-      .hero-grid, .custom {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2.4rem;
-      }
+    @media(max-width:900px){
+      .hero-grid,.products,.builder{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
-    <div class="logo">Sali<span>fresh</span></div>
-    <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir</a>
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="brand">SALIFRESH</div>
+    <a class="btn dark" href="#arma">Pedir por WhatsApp</a>
   </div>
 </header>
+
+<main>
 
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <h1>Fruta fresca <span>a domicilio</span></h1>
-      <p>Seleccionamos fruta de calidad y armamos tu box según tu estilo de vida. Fresco, simple y bien hecho.</p>
-      <a href="#boxes" class="btn btn-primary">Ver boxes</a>
-      <a href="https://wa.me/5210000000000" class="btn btn-outline">WhatsApp</a>
+      <h1>Fruta fresca, selección <span class="gold">premium</span></h1>
+      <p class="sub">
+        Boxes listas y opción <span class="gold">premium personalizable</span>.<br>
+        <b>Tú eliges la fruta. Nosotros hacemos el trabajo.</b>
+      </p>
+      <a class="btn dark" href="#cajas">Ver boxes</a>
     </div>
-    <div class="hero-image"></div>
   </div>
 </section>
 
-<section id="boxes">
+<section id="cajas">
   <div class="container">
     <div class="section-title">
-      <h2>Nuestros <span>boxes</span></h2>
-      <p>Opciones claras, con la flexibilidad que necesitas.</p>
+      <h2><span class="gold">Boxes</span></h2>
     </div>
 
-    <div class="boxes">
-      <div class="box">
-        <span class="tag">Individual</span>
-        <h3>Box Básica</h3>
-        <p>Fruta esencial para la semana.</p>
-        <div class="price">$199 MXN</div>
-        <a href="#" class="btn btn-primary">Pedir</a>
+    <div class="products">
+      <div class="card">
+        <h3>Box Esencial</h3>
+        <div class="price">$229</div>
+        <ul>
+          <li>Plátano</li>
+          <li>Manzana</li>
+          <li>Mandarina</li>
+          <li>Melón (cambiable)</li>
+        </ul>
+        <div class="actions">
+          <a class="btn dark" href="#arma">Pedir</a>
+        </div>
       </div>
 
-      <div class="box">
-        <span class="tag">Hogar</span>
-        <h3>Box Familiar</h3>
-        <p>Ideal para compartir en casa.</p>
-        <div class="price">$349 MXN</div>
-        <a href="#" class="btn btn-primary">Pedir</a>
+      <div class="card">
+        <h3>Box Balance (Familiar)</h3>
+        <div class="price">$329</div>
+        <ul>
+          <li>Más cantidad</li>
+          <li>Ideal para familia</li>
+          <li>Fruta variada</li>
+        </ul>
+        <div class="actions">
+          <a class="btn dark" href="#arma">Pedir</a>
+        </div>
       </div>
 
-      <div class="box">
-        <span class="tag">Premium</span>
-        <h3>Box Premium Personalizable</h3>
-        <p>Elige las frutas y cantidades que tú quieras.</p>
-        <div class="price">Desde $499 MXN</div>
-        <a href="#personaliza" class="btn btn-primary">Personalizar</a>
+      <div class="card">
+        <h3><span class="gold">Premium</span> Personalizable</h3>
+        <div class="price">Desde $229</div>
+        <ul>
+          <li>Elige frutas</li>
+          <li>Elige kilos</li>
+          <li>Precio según selección</li>
+        </ul>
+        <div class="actions">
+          <a class="btn dark" href="#arma">Personalizar</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="personaliza">
-  <div class="container custom">
-    <div>
-      <h2>Personaliza tu <span style="color:var(--gold)">Box Premium</span></h2>
-      <p>Arma tu box a tu gusto. Tú eliges, nosotros seleccionamos lo mejor.</p>
-
-      <ul>
-        <li>✔️ Elige las frutas que prefieras</li>
-        <li>✔️ Define cantidades según tu consumo</li>
-        <li>✔️ Confirmación directa por WhatsApp</li>
-        <li>✔️ Precio según selección</li>
-      </ul>
-
-      <a href="https://wa.me/5210000000000" class="btn btn-primary" style="margin-top:30px">Personalizar por WhatsApp</a>
-    </div>
-
-    <div class="fruits">
-      <div class="fruit">🍎 Manzana</div>
-      <div class="fruit">🍌 Plátano</div>
-      <div class="fruit">🍊 Naranja</div>
-      <div class="fruit">🍓 Fresa</div>
-      <div class="fruit">🥭 Mango</div>
-      <div class="fruit">🍍 Piña</div>
-      <div class="fruit">🥝 Kiwi</div>
-      <div class="fruit">🍐 Pera</div>
-    </div>
-  </div>
-</section>
-
-<section>
+<section id="arma">
   <div class="container">
     <div class="section-title">
-      <h2>Zonas de <span>entrega</span></h2>
+      <h2>Premium <span class="gold">Personalizable</span></h2>
     </div>
-    <div class="zones">
-      <div>Metepec</div>
-      <div>Toluca</div>
-      <div>CDMX</div>
+
+    <div class="builder">
+      <div class="panel">
+        <h3>Tamaño</h3>
+        <div class="sizes">
+          <div class="chip active">Box S · 5 kg</div>
+          <div class="chip">Box M · 8 kg</div>
+          <div class="chip">Box L · 12 kg</div>
+        </div>
+
+        <h3 style="margin-top:18px">Frutas</h3>
+        <div class="inventory">
+          <div class="item">Plátano · 1kg<div class="qty"><button>-</button><span>0</span><button>+</button></div></div>
+          <div class="item">Manzana · 1kg<div class="qty"><button>-</button><span>0</span><button>+</button></div></div>
+          <div class="item">Mandarina · 1kg<div class="qty"><button>-</button><span>0</span><button>+</button></div></div>
+          <div class="item">Fresa · domo<div class="qty"><button>-</button><span>0</span><button>+</button></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Resumen</h3>
+        <p class="sub">Confirmas todo por WhatsApp.</p>
+        <a class="btn dark" href="#">Confirmar y pedir</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="cta">
-      <h2>Empieza a comer mejor sin perder tiempo</h2>
-      <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir ahora</a>
-    </div>
-  </div>
-</section>
+</main>
 
 <footer>
-  © 2026 Salifresh · Fruta fresca a domicilio
+  <div class="container">
+    © <script>document.write(new Date().getFullYear())</script> SALIFRESH · Metepec y Toluca
+  </div>
 </footer>
 
 </body>
