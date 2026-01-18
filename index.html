@@ -5,39 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Salifresh | Fruta fresca a domicilio</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --green: #2e7d32;
-      --green-soft: #e8f5e9;
+      --green: #2f7d32;
+      --green-soft: #eef7f0;
       --gold: #c9a24d;
-      --text: #222;
-      --muted: #666;
-      --bg: #ffffff;
+      --text: #1f1f1f;
+      --muted: #6b6b6b;
       --border: #eaeaea;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: var(--bg);
+      background: #fff;
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ---------- Layout ---------- */
     .container {
       width: 90%;
       max-width: 1100px;
@@ -45,10 +37,9 @@
     }
 
     section {
-      padding: 80px 0;
+      padding: 90px 0;
     }
 
-    /* ---------- Header ---------- */
     header {
       padding: 25px 0;
       border-bottom: 1px solid var(--border);
@@ -61,23 +52,21 @@
     }
 
     .logo {
-      font-weight: 600;
       font-size: 1.4rem;
-      letter-spacing: 1px;
+      font-weight: 600;
     }
 
     .logo span {
       color: var(--green);
     }
 
-    /* ---------- Buttons ---------- */
     .btn {
-      display: inline-block;
       padding: 14px 32px;
       border-radius: 40px;
       font-size: 0.95rem;
       font-weight: 500;
-      transition: all 0.3s ease;
+      display: inline-block;
+      transition: 0.3s;
     }
 
     .btn-primary {
@@ -95,11 +84,6 @@
       margin-left: 15px;
     }
 
-    .btn-outline:hover {
-      background: var(--green-soft);
-    }
-
-    /* ---------- Hero ---------- */
     .hero {
       padding: 110px 0;
     }
@@ -122,20 +106,17 @@
     }
 
     .hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 35px;
       max-width: 480px;
+      color: var(--muted);
+      margin-bottom: 35px;
     }
 
     .hero-image {
-      width: 100%;
       height: 420px;
       border-radius: 24px;
       background: url("https://images.unsplash.com/photo-1573246123716-6b1782bfc499") center/cover no-repeat;
     }
 
-    /* ---------- Section Title ---------- */
     .section-title {
       text-align: center;
       margin-bottom: 60px;
@@ -144,7 +125,6 @@
     .section-title h2 {
       font-size: 2.2rem;
       font-weight: 500;
-      margin-bottom: 10px;
     }
 
     .section-title span {
@@ -156,7 +136,6 @@
       font-size: 0.95rem;
     }
 
-    /* ---------- Boxes ---------- */
     .boxes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -167,8 +146,7 @@
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 35px;
-      transition: all 0.3s ease;
-      background: #fff;
+      transition: 0.3s;
     }
 
     .box:hover {
@@ -176,90 +154,48 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.05);
     }
 
-    .box h3 {
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .box .tag {
+    .tag {
       font-size: 0.8rem;
       color: var(--gold);
       margin-bottom: 15px;
       display: inline-block;
     }
 
-    .box p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 25px;
-    }
-
     .price {
       font-size: 1.4rem;
-      font-weight: 500;
-      margin-bottom: 25px;
+      margin: 25px 0;
     }
 
-    /* ---------- How it works ---------- */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    .zones {
+      display: flex;
+      justify-content: center;
       gap: 30px;
-      text-align: center;
-    }
-
-    .step {
-      padding: 25px;
-    }
-
-    .step-number {
-      font-size: 1.6rem;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .step p {
+      flex-wrap: wrap;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
-    /* ---------- CTA ---------- */
     .cta {
       background: var(--green-soft);
       text-align: center;
       padding: 90px 20px;
       border-radius: 30px;
-      margin: 60px auto;
     }
 
-    .cta h2 {
-      font-size: 2.1rem;
-      font-weight: 500;
-      margin-bottom: 25px;
-    }
-
-    /* ---------- Footer ---------- */
     footer {
       padding: 40px 0;
       text-align: center;
-      border-top: 1px solid var(--border);
       font-size: 0.85rem;
       color: var(--muted);
+      border-top: 1px solid var(--border);
     }
 
-    /* ---------- Responsive ---------- */
     @media(max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
       }
-
       .hero h1 {
         font-size: 2.4rem;
-      }
-
-      .hero-image {
-        height: 320px;
       }
     }
   </style>
@@ -267,108 +203,85 @@
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div class="logo">Sali<span>fresh</span></div>
-      <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir</a>
+<header>
+  <div class="container nav">
+    <div class="logo">Sali<span>fresh</span></div>
+    <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Fruta fresca <span>a domicilio</span></h1>
+      <p>Seleccionamos fruta de calidad, armamos tu box y lo llevamos directo a tu puerta. Simple, fresco y bien hecho.</p>
+      <a href="#boxes" class="btn btn-primary">Ver boxes</a>
+      <a href="https://wa.me/5210000000000" class="btn btn-outline">WhatsApp</a>
     </div>
-  </header>
+    <div class="hero-image"></div>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1>Fruta fresca <span>a domicilio</span></h1>
-        <p>
-          Seleccionamos fruta de calidad, armamos tu box y lo llevamos
-          directo a tu puerta. Simple, fresco y sin complicaciones.
-        </p>
-        <a href="#boxes" class="btn btn-primary">Ver boxes</a>
-        <a href="https://wa.me/5210000000000" class="btn btn-outline">WhatsApp</a>
-      </div>
-      <div class="hero-image"></div>
+<section id="boxes">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nuestros <span>boxes</span></h2>
+      <p>Opciones claras, sin complicaciones</p>
     </div>
-  </section>
 
-  <!-- Boxes -->
-  <section id="boxes">
-    <div class="container">
-      <div class="section-title">
-        <h2>Nuestros <span>boxes</span></h2>
-        <p>Opciones simples para cada tipo de hogar</p>
+    <div class="boxes">
+      <div class="box">
+        <span class="tag">Individual</span>
+        <h3>Box Básica</h3>
+        <p>Fruta esencial para la semana.</p>
+        <div class="price">$199 MXN</div>
+        <a href="#" class="btn btn-primary">Pedir</a>
       </div>
 
-      <div class="boxes">
-        <div class="box">
-          <span class="tag">Ideal para ti</span>
-          <h3>Box Básica</h3>
-          <p>Fruta fresca esencial para la semana.</p>
-          <div class="price">$199 MXN</div>
-          <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir</a>
-        </div>
+      <div class="box">
+        <span class="tag">Hogar</span>
+        <h3>Box Familiar</h3>
+        <p>Ideal para compartir en casa.</p>
+        <div class="price">$349 MXN</div>
+        <a href="#" class="btn btn-primary">Pedir</a>
+      </div>
 
-        <div class="box">
-          <span class="tag">Más popular</span>
-          <h3>Box Familiar</h3>
-          <p>Perfecta para compartir en casa.</p>
-          <div class="price">$349 MXN</div>
-          <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir</a>
-        </div>
-
-        <div class="box">
-          <span class="tag">Premium</span>
-          <h3>Box Premium</h3>
-          <p>Elige frutas y cantidades a tu gusto.</p>
-          <div class="price">$499 MXN</div>
-          <a href="https://wa.me/5210000000000" class="btn btn-primary">Personalizar</a>
-        </div>
+      <div class="box">
+        <span class="tag">Premium</span>
+        <h3>Box Premium Personalizable</h3>
+        <p>Elige las frutas que quieras, en las cantidades que prefieras.</p>
+        <div class="price">Desde $499 MXN</div>
+        <a href="#" class="btn btn-primary">Personalizar</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- How it works -->
-  <section>
-    <div class="container">
-      <div class="section-title">
-        <h2>Cómo <span>funciona</span></h2>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">01</div>
-          <p>Elige tu box</p>
-        </div>
-        <div class="step">
-          <div class="step-number">02</div>
-          <p>Confirma por WhatsApp</p>
-        </div>
-        <div class="step">
-          <div class="step-number">03</div>
-          <p>Armamos tu pedido</p>
-        </div>
-        <div class="step">
-          <div class="step-number">04</div>
-          <p>Entregamos en tu zona</p>
-        </div>
-      </div>
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Zonas de <span>entrega</span></h2>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section>
-    <div class="container">
-      <div class="cta">
-        <h2>Empieza a comer mejor sin perder tiempo</h2>
-        <a href="https://wa.me/5210000000000" class="btn btn-primary">Pedir ahora</a>
-      </div>
+    <div class="zones">
+      <div>Metepec</div>
+      <div>Toluca</div>
+      <div>CDMX</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    © 2026 Salifresh · Fruta fresca a domicilio
-  </footer>
+<section>
+  <div class="container">
+    <div class="cta">
+      <h2>Empieza a comer mejor sin perder tiempo</h2>
+      <a href="#" class="btn btn-primary">Pedir ahora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Salifresh · Fruta fresca a domicilio
+</footer>
 
 </body>
 </html>
