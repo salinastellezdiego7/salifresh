@@ -1,1836 +1,483 @@
-<!doctype html>
-<html lang="es-MX">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SALIFRESH — Fresh Fruit, No Compromise</title>
-  <meta name="description" content="SALIFRESH: fruta fresca y seleccionada en Metepec y Toluca Centro. Boxes, inventario visual y premium personalizable." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SALIFRESH | Fruta fresca, selección premium</title>
 
   <style>
-    :root{
-      --green:#1f6b4f;
-      --green2:#2a8a64;
-      --gold:#d7b35f;
-      --gold2:#f0d184;
-
-      --ink:#0f172a;
-      --muted:#475569;
-      --paper:#ffffff;
-      --paper2:#f6f7f7;
-
-      --border: rgba(15,23,42,.10);
-      --shadow: 0 16px 36px rgba(2,6,23,.10);
-      --radius: 18px;
+    :root {
+      --verde: #6fbf22;
+      --verde-oscuro: #1f6b2e;
+      --dorado: #d4a83f;
+      --rojo: #d81919;
+      --cafe: #7b4b25;
+      --blanco: #ffffff;
+      --negro: #080808;
+      --gris: #f5f5f5;
+      --texto: #222;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      color:var(--ink);
-      background:var(--paper);
-      overflow-x:hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{width:min(1120px, 92vw); margin:0 auto}
-    .gold{color:var(--gold); font-weight:1000}
-    .green{color:var(--green); font-weight:1000}
-    .muted{color:var(--muted)}
-
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,.9);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0; gap:12px;
-    }
-    .brand{display:flex; align-items:center; gap:12px}
-    .logoMark{
-      width:44px; height:44px; border-radius:14px;
-      border:1px solid rgba(215,179,95,.35);
-      box-shadow:0 10px 26px rgba(2,6,23,.10);
-      display:grid; place-items:center; overflow:hidden;
-      background:#fff;
-      flex:0 0 44px;
-    }
-    .brand .name{
-      font-weight:1000;
-      letter-spacing:.18em;
-      color:var(--green);
-      text-transform:uppercase;
-      font-size:15px;
-    }
-    .brand .tag{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:850;
+    body {
+      background: var(--blanco);
+      color: var(--texto);
     }
 
-    .menuBtn{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:46px; height:46px;
-      border-radius:14px;
-      border:1px solid rgba(31,107,79,.18);
-      background:linear-gradient(135deg, rgba(31,107,79,.10), rgba(240,209,132,.10));
-      cursor:pointer;
-      box-shadow:var(--shadow);
-    }
-    .menuBtn svg{width:22px;height:22px}
-
-    /* Side Menu */
-    .menuOverlay{
-      position:fixed; inset:0;
-      background:rgba(2,6,23,.40);
-      opacity:0; pointer-events:none;
-      transition:.25s ease;
-      z-index:70;
-    }
-    .menuOverlay.active{
-      opacity:1; pointer-events:auto;
-    }
-    .sideMenu{
-      position:fixed; top:0; right:0; height:100vh; width:min(380px, 92vw);
-      background:#fff;
-      transform:translateX(110%);
-      transition:.28s ease;
-      z-index:80;
-      box-shadow:-20px 0 40px rgba(2,6,23,.16);
-      display:flex; flex-direction:column;
-    }
-    .sideMenu.active{transform:translateX(0)}
-    .sideMenuHeader{
-      padding:18px;
-      border-bottom:1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .closeBtn{
-      width:42px; height:42px; border-radius:14px;
-      border:1px solid var(--border);
-      background:#fff;
-      cursor:pointer;
-      display:grid; place-items:center;
-    }
-    .closeBtn svg{width:18px;height:18px}
-    .sideMenuBody{padding:12px 18px 22px; overflow:auto}
-    .menuGroupTitle{
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      color:var(--muted);
-      font-weight:1000;
-      margin:14px 0 8px;
-    }
-    .menuLink{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
-      padding:14px 12px;
-      border-radius:14px;
-      font-weight:900;
-      color:var(--ink);
-      border:1px solid transparent;
-    }
-    .menuLink:hover{
-      background:rgba(31,107,79,.05);
-      border-color:rgba(31,107,79,.10);
-    }
-    .menuLink small{color:var(--muted); font-weight:800}
-    .menuCTA{
-      display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;
+    header {
+      background: var(--negro);
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px;
-      border-radius:999px;
-      border:1px solid rgba(31,107,79,.20);
-      background:linear-gradient(135deg, rgba(31,107,79,.10), rgba(240,209,132,.10));
-      color:var(--ink);
-      font-weight:950;
-      cursor:pointer;
-      transition:transform .12s ease, filter .12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); filter:brightness(1.03)}
-    .btn.dark{
-      background:linear-gradient(135deg, rgba(31,107,79,.95), rgba(42,138,100,.95));
-      border:1px solid rgba(31,107,79,.25);
-      color:#fff;
-    }
-    .btn.secondary{
-      background:#fff;
-      border:1px solid var(--border);
-      color:var(--ink);
-    }
-    .btn.ghost{
-      background:#fff;
-      color:var(--green);
-      border:1px solid rgba(31,107,79,.18);
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 3px;
     }
 
-    /* HERO */
-    .hero{
-      padding:54px 0 18px;
-      background:
-        radial-gradient(900px 520px at 12% 10%, rgba(240,209,132,.22), transparent 55%),
-        radial-gradient(800px 520px at 90% 20%, rgba(31,107,79,.14), transparent 55%),
-        linear-gradient(180deg, #ffffff, #ffffff);
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px; border-radius:999px;
-      background:rgba(31,107,79,.08);
-      border:1px solid rgba(31,107,79,.12);
-      color:var(--green);
-      font-weight:950;
-      font-size:13px;
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size:clamp(34px, 4.2vw, 54px);
-      line-height:1.04;
-      letter-spacing:-.02em;
-    }
-    .sub{
-      color:var(--muted);
-      line-height:1.65;
-      font-size:clamp(15px, 1.35vw, 18px);
-      margin:0 0 18px;
-    }
-    .hero-actions{
-      display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;
+    .logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
     }
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-    .stat{
-      padding:14px; border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-    }
-    .stat b{display:block; color:var(--green)}
-    .stat span{
-      display:block;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:750;
-      margin-top:4px;
+    .logo span:first-child {
+      color: var(--dorado);
     }
 
-    .hero-card{
-      padding:18px; border-radius:22px;
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-    }
-    .hero-card h3{margin:0 0 6px}
-    .hero-card p{
-      margin:0 0 12px;
-      color:var(--muted);
-      line-height:1.6;
+    .logo span:last-child {
+      color: var(--rojo);
     }
 
-    .field{
-      display:grid;
-      gap:6px;
-      margin-bottom:10px;
-      font-size:13px;
-      font-weight:900;
-      color:var(--muted);
-    }
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:#fff;
-      color:var(--ink);
-      outline:none;
-      font-weight:850;
-      font-family:inherit;
-    }
-    input::placeholder, textarea::placeholder{
-      color:rgba(71,85,105,.75)
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 15px;
     }
 
-    /* Hero collage */
-    .fruitHero{
-      border-radius:22px;
-      background:
-        radial-gradient(600px 360px at 20% 10%, rgba(215,179,95,.18), transparent 60%),
-        radial-gradient(520px 360px at 80% 20%, rgba(31,107,79,.16), transparent 55%),
-        linear-gradient(180deg, #ffffff, #ffffff);
-      border:1px solid rgba(31,107,79,.14);
-      box-shadow:var(--shadow);
-      padding:16px;
-      display:grid;
-      gap:12px;
-    }
-    .fruitHeroTop{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .fruitHeroTop b{color:var(--green); font-weight:1000}
-    .fruitHeroTop span{color:var(--muted); font-weight:900; font-size:13px}
-    .fruitHeroArt{
-      border-radius:18px;
-      border:1px solid rgba(215,179,95,.25);
-      background:linear-gradient(180deg, rgba(31,107,79,.04), rgba(255,255,255,1));
-      overflow:hidden;
-    }
-    .fruitHeroChips{
-      display:flex; flex-wrap:wrap; gap:10px;
-    }
-    .miniChip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(31,107,79,.14);
-      background:#fff;
-      color:var(--muted);
-      font-weight:900;
-      font-size:13px;
+    nav a:hover {
+      color: var(--dorado);
     }
 
-    section{padding:34px 0}
-    .light{background:var(--paper)}
-    .light.alt{background:var(--paper2)}
-
-    .section-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:14px;
-      margin-bottom:14px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size:clamp(22px, 2.4vw, 32px);
-      letter-spacing:-.02em;
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 70px 8%;
+      gap: 50px;
+      background: linear-gradient(120deg, #fff 50%, #f7f7f7 50%);
     }
 
-    .pill{
-      display:inline-flex;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:950;
-      letter-spacing:.08em;
-      border:1px solid rgba(215,179,95,.30);
-      background:rgba(215,179,95,.14);
-      color:#6a4e12;
-      margin-bottom:10px;
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 20px;
     }
 
-    /* Boxes */
-    .products{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-    .card{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
-    .card h3{margin:0 0 6px}
-    .price{
-      font-size:26px;
-      font-weight:1000;
-      color:var(--green2);
-      margin:6px 0 10px;
-    }
-    .desc{
-      color:var(--muted);
-      font-weight:900;
-      line-height:1.55;
-      margin:0 0 10px;
-    }
-    ul.list{
-      margin:0;
-      padding-left:18px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-    .product-actions{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+    .hero h1 span {
+      color: var(--verde-oscuro);
     }
 
-    #cajas{
-      background:
-        radial-gradient(900px 520px at 15% 10%, rgba(31,107,79,.10), transparent 60%),
-        radial-gradient(700px 420px at 90% 20%, rgba(215,179,95,.14), transparent 55%),
-        linear-gradient(180deg, #ffffff, #ffffff);
-    }
-    #cajas .card{
-      background:
-        linear-gradient(180deg, rgba(31,107,79,.06), rgba(255,255,255,1) 55%);
-      border:1px solid rgba(31,107,79,.14);
-      position:relative;
-      overflow:hidden;
-    }
-    #cajas .card::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:4px;
-      background:linear-gradient(90deg, rgba(31,107,79,.95), rgba(215,179,95,.95));
-    }
-    #cajas .price{color:var(--green)}
-    #cajas .pill{
-      border:1px solid rgba(215,179,95,.45);
-      background:rgba(215,179,95,.18);
-      color:#6a4e12;
+    .hero p {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 32px;
+      max-width: 520px;
     }
 
-    .boxIcons{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin:10px 0 0;
-    }
-    .boxIcon{
-      width:34px; height:34px;
-      border-radius:14px;
-      display:grid; place-items:center;
-      background:linear-gradient(180deg, rgba(31,107,79,.08), rgba(215,179,95,.10));
-      border:1px solid rgba(31,107,79,.12);
-    }
-    .boxIcon svg{width:18px;height:18px}
-
-    /* Nosotros */
-    .aboutGrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-    .aboutCard{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:20px;
-    }
-    .aboutCard p{
-      color:var(--muted);
-      font-weight:900;
-      line-height:1.7;
-      margin:0;
-    }
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-      margin-top:14px;
-    }
-    .step{
-      border-radius:16px;
-      background:#fff;
-      border:1px solid rgba(31,107,79,.14);
-      box-shadow:var(--shadow);
-      padding:14px;
-    }
-    .step b{display:block; color:var(--green); margin-bottom:4px}
-    .step span{color:var(--muted); font-weight:900; font-size:13px; line-height:1.5}
-
-    /* Inventory */
-    .invHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .filters{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .filterBtn{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(31,107,79,.18);
-      background:#fff;
-      color:var(--green);
-      cursor:pointer;
-      font-weight:950;
-    }
-    .filterBtn.active{
-      background:linear-gradient(135deg, rgba(31,107,79,.95), rgba(42,138,100,.95));
-      color:#fff;
-      border-color:rgba(31,107,79,.25);
+    .btn {
+      display: inline-block;
+      background: var(--verde-oscuro);
+      color: white;
+      padding: 15px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 12px;
+      transition: 0.3s;
     }
 
-    .inventoryGrid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-    .invCard{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid rgba(31,107,79,.14);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-    }
-    .invImage{
-      aspect-ratio:4/3;
-      overflow:hidden;
-      background:linear-gradient(180deg, rgba(31,107,79,.08), rgba(215,179,95,.10));
-      position:relative;
-      display:grid;
-      place-items:center;
-    }
-    .invImage img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .invImage svg{
-      width:60px;
-      height:60px;
-    }
-    .invBody{
-      padding:14px;
-      display:grid;
-      gap:10px;
-    }
-    .invBody h4{
-      margin:0;
-      font-size:16px;
-    }
-    .status{
-      display:inline-flex;
-      width:max-content;
-      align-items:center;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:1000;
-    }
-    .status.disponible{
-      background:rgba(31,107,79,.10);
-      color:var(--green);
-      border:1px solid rgba(31,107,79,.15);
-    }
-    .status.temporada{
-      background:rgba(215,179,95,.16);
-      color:#7b5a10;
-      border:1px solid rgba(215,179,95,.20);
-    }
-    .status.agotado{
-      background:rgba(148,163,184,.12);
-      color:#64748b;
-      border:1px solid rgba(148,163,184,.20);
-    }
-    .invMeta{
-      color:var(--muted);
-      font-size:13px;
-      font-weight:900;
-      line-height:1.5;
+    .btn:hover {
+      background: var(--verde);
+      transform: translateY(-2px);
     }
 
-    /* Builder */
-    .builder{
-      display:grid;
-      grid-template-columns:.92fr 1.08fr;
-      gap:14px;
-      align-items:start;
-    }
-    .panel{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
-    .sizes{
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px; border-radius:999px;
-      border:1px solid rgba(31,107,79,.18);
-      background:#fff;
-      cursor:pointer;
-      font-weight:950;
-      color:var(--green);
-      user-select:none;
-    }
-    .chip.active{
-      border-color:rgba(42,138,100,.45);
-      box-shadow:0 10px 18px rgba(2,6,23,.08);
-      background:linear-gradient(180deg, rgba(31,107,79,.06), rgba(31,107,79,.02));
+    .btn-sec {
+      background: var(--dorado);
+      color: black;
     }
 
-    .inv-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-      margin-top:12px;
-    }
-    .item{
-      border:1px solid rgba(31,107,79,.14);
-      border-radius:14px;
-      padding:12px;
-      display:grid;
-      gap:8px;
-      background:#fff;
-    }
-    .item-top{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:center;
-    }
-    .item b{color:var(--ink)}
-    .item small{
-      color:var(--muted);
-      font-weight:850;
-    }
-    .item-left{
-      display:flex; gap:10px; align-items:center;
+    .hero-img img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
     }
 
-    .fruitIcon{
-      width:40px; height:40px;
-      border-radius:14px;
-      display:grid; place-items:center;
-      background:linear-gradient(180deg, rgba(31,107,79,.08), rgba(215,179,95,.10));
-      border:1px solid rgba(31,107,79,.12);
-      flex:0 0 40px;
-      overflow:hidden;
+    section {
+      padding: 80px 8%;
     }
 
-    .qty{
-      display:flex; align-items:center; gap:8px;
-    }
-    .qty button{
-      width:34px; height:34px; border-radius:10px;
-      border:1px solid rgba(31,107,79,.18);
-      background:#fff;
-      cursor:pointer;
-      font-weight:1000;
-      color:var(--green);
-    }
-    .qty button:disabled{
-      opacity:.35;
-      cursor:not-allowed;
-    }
-    .qty span{
-      min-width:44px;
-      text-align:center;
-      font-weight:1000;
-      color:var(--green);
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
     }
 
-    .notice{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(31,107,79,.08);
-      border:1px solid rgba(31,107,79,.12);
-      color:var(--muted);
-      font-weight:900;
-      line-height:1.5;
-      font-size:13px;
+    .section-title h2 {
+      font-size: 38px;
+      color: var(--verde-oscuro);
+      margin-bottom: 10px;
     }
 
-    .summary{
-      display:grid; gap:10px;
-    }
-    .summary .row{
-      display:flex; justify-content:space-between;
-      gap:12px;
-      font-weight:950;
-      color:var(--ink);
-    }
-    .summary .row span{
-      color:var(--muted);
-      font-weight:950;
-    }
-    .summary ul{
-      margin:0;
-      padding-left:18px;
-      color:var(--muted);
-      line-height:1.7;
+    .section-title p {
+      color: #666;
     }
 
-    /* Zones */
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-    .zoneCard{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .zoneCard b{color:var(--green)}
-    .zoneCard span{color:var(--muted); font-weight:900}
-
-    /* FAQ */
-    details{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:14px 16px;
-    }
-    details + details{margin-top:10px}
-    summary{
-      cursor:pointer;
-      font-weight:1000;
-      color:var(--ink);
-    }
-    details p{
-      margin:10px 0 0;
-      color:var(--muted);
-      line-height:1.6;
+    .nosotros {
+      background: var(--negro);
+      color: white;
+      text-align: center;
     }
 
-    /* Contact */
-    .contactGrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-    .contactCard{
-      border-radius:var(--radius);
-      background:#fff;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
-    .contactList{
-      display:grid; gap:10px;
-    }
-    .contactItem{
-      display:flex; align-items:center; gap:12px;
-      padding:12px;
-      border:1px solid rgba(31,107,79,.12);
-      border-radius:14px;
-      background:#fff;
-      font-weight:900;
-      color:var(--muted);
-    }
-    .contactItem .fruitIcon{
-      width:38px;height:38px;border-radius:12px;
+    .nosotros-card {
+      max-width: 900px;
+      margin: auto;
+      padding: 45px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border: 1px solid rgba(212,168,63,0.35);
     }
 
-    footer{
-      padding:26px 0 40px;
-      border-top:1px solid var(--border);
-      background:#fff;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:14px;
-    }
-    .footer-muted{color:var(--muted)}
-
-    /* Modals */
-    .modalOverlay{
-      position:fixed; inset:0;
-      background:rgba(2,6,23,.45);
-      opacity:0; pointer-events:none;
-      transition:.25s ease;
-      z-index:100;
-      display:grid;
-      place-items:center;
-      padding:20px;
-    }
-    .modalOverlay.active{
-      opacity:1; pointer-events:auto;
-    }
-    .modal{
-      width:min(520px, 100%);
-      background:#fff;
-      border-radius:22px;
-      border:1px solid var(--border);
-      box-shadow:0 24px 60px rgba(2,6,23,.18);
-      overflow:hidden;
-      transform:translateY(12px) scale(.98);
-      transition:.25s ease;
-    }
-    .modalOverlay.active .modal{
-      transform:translateY(0) scale(1);
-    }
-    .modalHead{
-      padding:18px;
-      border-bottom:1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .modalBody{
-      padding:18px;
-    }
-    .grid2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
+    .nosotros-card img {
+      width: 120px;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 950px){
-      .hero-grid{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
-      .products{grid-template-columns:1fr}
-      .aboutGrid{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr 1fr}
-      .inventoryGrid{grid-template-columns:1fr 1fr}
-      .builder{grid-template-columns:1fr}
-      .inv-grid{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .contactGrid{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
+    .nosotros-card h2 {
+      font-size: 40px;
+      margin-bottom: 18px;
     }
 
-    @media (max-width: 680px){
-      .inventoryGrid{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr}
+    .nosotros-card h2 span {
+      color: var(--dorado);
+    }
+
+    .nosotros-card .frase {
+      font-size: 22px;
+      color: var(--dorado);
+      letter-spacing: 1px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      color: var(--verde-oscuro);
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .precio {
+      font-size: 30px;
+      color: var(--rojo);
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .inventario {
+      background: var(--gris);
+    }
+
+    .grid-inventario {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .producto {
+      background: white;
+      padding: 22px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .producto span {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #e8f8e2;
+      color: var(--verde-oscuro);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .zonas {
+      background: var(--negro);
+      color: white;
+      text-align: center;
+    }
+
+    .zonas h2 {
+      color: var(--dorado);
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .zonas p {
+      font-size: 22px;
+    }
+
+    .faq-item {
+      max-width: 850px;
+      margin: 0 auto 18px;
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .faq-item h3 {
+      color: var(--verde-oscuro);
+      margin-bottom: 8px;
+    }
+
+    .contacto {
+      text-align: center;
+      background: var(--gris);
+    }
+
+    footer {
+      background: var(--negro);
+      color: white;
+      text-align: center;
+      padding: 35px 8%;
+    }
+
+    footer img {
+      width: 70px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .cards,
+      .grid-inventario {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <div class="logoMark" aria-label="SALIFRESH logo">
-          <svg viewBox="0 0 64 64" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 18c-2.5-6-12-7-18-1-6 6-2 12 5 14 8 2 12 4 12 9 0 6-10 10-18 3" stroke="rgba(31,107,79,.95)" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M39 14c7-1 12 2 13 8-7 1-12-2-13-8Z" fill="rgba(240,209,132,.55)" stroke="rgba(215,179,95,.90)" stroke-width="1.4"/>
-          </svg>
-        </div>
-        <div>
-          <div class="name">SALIFRESH</div>
-          <div class="tag">Fresh Fruit, <span class="gold">No Compromise</span></div>
-        </div>
-      </a>
 
-      <button class="menuBtn" id="openMenu" aria-label="Abrir menú">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 7H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M4 12H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M4 17H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-        </svg>
-      </button>
+  <header>
+    <div class="logo">
+      <img src="logo-pera.png" alt="Logo SALIFRESH">
+      <div><span>SALI</span><span>FRESH</span></div>
     </div>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#boxes">Boxes</a>
+      <a href="#inventario">Inventario</a>
+      <a href="#zonas">Zonas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <!-- SIDE MENU -->
-  <div class="menuOverlay" id="menuOverlay"></div>
-  <aside class="sideMenu" id="sideMenu" aria-label="Menú principal">
-    <div class="sideMenuHeader">
-      <div class="brand">
-        <div class="logoMark">
-          <svg viewBox="0 0 64 64" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M40 18c-2.5-6-12-7-18-1-6 6-2 12 5 14 8 2 12 4 12 9 0 6-10 10-18 3" stroke="rgba(31,107,79,.95)" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M39 14c7-1 12 2 13 8-7 1-12-2-13-8Z" fill="rgba(240,209,132,.55)" stroke="rgba(215,179,95,.90)" stroke-width="1.4"/>
-          </svg>
-        </div>
-        <div>
-          <div class="name">SALIFRESH</div>
-          <div class="tag">Fresh Fruit, <span class="gold">No Compromise</span></div>
-        </div>
-      </div>
-
-      <button class="closeBtn" id="closeMenu" aria-label="Cerrar menú">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+  <section class="hero" id="inicio">
+    <div>
+      <h1>Fruta fresca, <span>selección premium.</span></h1>
+      <p>Boxes de fruta fresca para hogares y negocios en Toluca y Metepec.</p>
+      <a class="btn" href="https://wa.me/5217220000000" target="_blank">Pedir por WhatsApp</a>
+      <a class="btn btn-sec" href="#boxes">Ver boxes</a>
     </div>
 
-    <div class="sideMenuBody">
-      <div class="menuGroupTitle">Cuenta</div>
-      <a href="#" class="menuLink" id="openRegister">
-        <span>Registrarse</span>
-        <small>Nuevo cliente</small>
-      </a>
-      <a href="#" class="menuLink" id="openLogin">
-        <span>Iniciar sesión</span>
-        <small>Acceso rápido</small>
-      </a>
+    <div class="hero-img">
+      <img src="box-salifresh.jpg" alt="Box SALIFRESH con fruta fresca">
+    </div>
+  </section>
 
-      <div class="menuGroupTitle">Navegación</div>
-      <a href="#nosotros" class="menuLink menuNav">Nosotros</a>
-      <a href="#inventario" class="menuLink menuNav">Inventario</a>
-      <a href="#arma" class="menuLink menuNav">Box Premium Personalizable</a>
-      <a href="#zonas" class="menuLink menuNav">Zonas</a>
-      <a href="#faq" class="menuLink menuNav">FAQ</a>
-      <a href="#contactanos" class="menuLink menuNav">Contáctanos</a>
+  <section class="nosotros" id="nosotros">
+    <div class="nosotros-card">
+      <img src="logo-pera.png" alt="Logo pera SALIFRESH">
+      <h2><span>SALI</span>FRESH</h2>
+      <p class="frase">Fruta fresca, selección premium.</p>
+    </div>
+  </section>
 
-      <div class="menuCTA">
-        <a href="#arma" class="btn dark menuNav">Armar mi box</a>
-        <a href="#inventario" class="btn secondary menuNav">Ver inventario</a>
+  <section id="boxes">
+    <div class="section-title">
+      <h2>Nuestras Boxes</h2>
+      <p>Elige una box lista o personaliza la tuya.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Box Esencial</h3>
+        <p>Ideal para consumo básico semanal.</p>
+        <div class="precio">$229 MXN</div>
+        <a class="btn" href="https://wa.me/5217220000000" target="_blank">Pedir</a>
+      </div>
+
+      <div class="card">
+        <h3>Box Balance</h3>
+        <p>Más variedad para casa u oficina.</p>
+        <div class="precio">$329 MXN</div>
+        <a class="btn" href="https://wa.me/5217220000000" target="_blank">Pedir</a>
+      </div>
+
+      <div class="card">
+        <h3>Premium Personalizable</h3>
+        <p>Tú eliges frutas, cantidades y kilos.</p>
+        <div class="precio">A cotizar</div>
+        <a class="btn" href="https://wa.me/5217220000000" target="_blank">Personalizar</a>
       </div>
     </div>
-  </aside>
+  </section>
 
-  <!-- REGISTER MODAL -->
-  <div class="modalOverlay" id="registerModal">
-    <div class="modal">
-      <div class="modalHead">
-        <div>
-          <div style="font-weight:1000; font-size:20px;">Registrarse</div>
-          <div class="muted" style="font-weight:900; font-size:13px;">Crea tu cuenta para hacer pedidos más rápido</div>
-        </div>
-        <button class="closeBtn" data-close-modal="registerModal">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
+  <section class="inventario" id="inventario">
+    <div class="section-title">
+      <h2>Inventario</h2>
+      <p>Fruta disponible para tus pedidos.</p>
+    </div>
+
+    <div class="grid-inventario">
+      <div class="producto">
+        <h3>Manzana</h3>
+        <span>Disponible</span>
       </div>
-      <div class="modalBody">
-        <div class="grid2">
-          <label class="field">Nombre completo
-            <input placeholder="Tu nombre completo" />
-          </label>
-          <label class="field">Teléfono
-            <input placeholder="Tu teléfono" />
-          </label>
-        </div>
-        <label class="field">Correo
-          <input placeholder="tucorreo@ejemplo.com" />
-        </label>
-        <label class="field">Dirección
-          <input placeholder="Calle, colonia, referencia" />
-        </label>
-        <label class="field">Contraseña
-          <input type="password" placeholder="Tu contraseña" />
-        </label>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-          <button class="btn dark">Crear cuenta</button>
-          <button class="btn secondary" data-close-modal="registerModal">Cerrar</button>
-        </div>
+
+      <div class="producto">
+        <h3>Plátano</h3>
+        <span>Disponible</span>
+      </div>
+
+      <div class="producto">
+        <h3>Pera</h3>
+        <span>Disponible</span>
+      </div>
+
+      <div class="producto">
+        <h3>Fresa</h3>
+        <span>Temporada</span>
+      </div>
+
+      <div class="producto">
+        <h3>Mandarina</h3>
+        <span>Disponible</span>
+      </div>
+
+      <div class="producto">
+        <h3>Uva</h3>
+        <span>Disponible</span>
+      </div>
+
+      <div class="producto">
+        <h3>Kiwi</h3>
+        <span>Disponible</span>
+      </div>
+
+      <div class="producto">
+        <h3>Mango</h3>
+        <span>Temporada</span>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- LOGIN MODAL -->
-  <div class="modalOverlay" id="loginModal">
-    <div class="modal">
-      <div class="modalHead">
-        <div>
-          <div style="font-weight:1000; font-size:20px;">Iniciar sesión</div>
-          <div class="muted" style="font-weight:900; font-size:13px;">Ingresa para consultar tus pedidos más rápido</div>
-        </div>
-        <button class="closeBtn" data-close-modal="loginModal">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-      <div class="modalBody">
-        <label class="field">Correo o teléfono
-          <input placeholder="Correo o teléfono" />
-        </label>
-        <label class="field">Contraseña
-          <input type="password" placeholder="Tu contraseña" />
-        </label>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-          <button class="btn dark">Entrar</button>
-          <button class="btn secondary" data-close-modal="loginModal">Cerrar</button>
-        </div>
-      </div>
+  <section class="zonas" id="zonas">
+    <h2>Zonas de entrega</h2>
+    <p>Toluca y Metepec</p>
+  </section>
+
+  <section id="faq">
+    <div class="section-title">
+      <h2>Preguntas frecuentes</h2>
     </div>
-  </div>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="badge">🚚 Metepec y Toluca Centro</div>
-          <h1>Fruta fresca, selección <span class="gold">premium</span>.</h1>
-          <p class="sub">
-            Boxes listas, inventario visual y opción <span class="gold">premium personalizable</span> para elegir frutas y kilos.
-            <b>Para <span class="gold">hogar</span> o <span class="gold">negocio</span>.</b>
-          </p>
+    <div class="faq-item">
+      <h3>¿Puedo cambiar frutas de mi box?</h3>
+      <p>Sí, puedes solicitar cambios de acuerdo con la disponibilidad.</p>
+    </div>
 
-          <div class="hero-actions">
-            <a class="btn dark" href="#arma">Armar mi box</a>
-            <a class="btn secondary" href="#inventario">Ver inventario</a>
-          </div>
+    <div class="faq-item">
+      <h3>¿Cómo hago mi pedido?</h3>
+      <p>Por WhatsApp, indicando tu box, dirección y horario de entrega.</p>
+    </div>
 
-          <div class="stats">
-            <div class="stat"><b>Fruta <span class="gold">seleccionada</span></b><span>Calidad y frescura</span></div>
-            <div class="stat"><b>Atención cercana</b><span>Compra simple y rápida</span></div>
-            <div class="stat"><b>Metepec / Toluca</b><span>Entregas programadas</span></div>
-          </div>
-        </div>
+    <div class="faq-item">
+      <h3>¿Tienen entregas para negocios?</h3>
+      <p>Sí, podemos armar pedidos para oficinas, cafeterías y negocios.</p>
+    </div>
+  </section>
 
-        <div class="fruitHero">
-          <div class="fruitHeroTop">
-            <b>Solo frutas</b>
-            <span>Visual premium • limpio</span>
-          </div>
+  <section class="contacto" id="contacto">
+    <div class="section-title">
+      <h2>Contáctanos</h2>
+      <p>Haz tu pedido o cotiza una box personalizada.</p>
+    </div>
 
-          <div class="fruitHeroArt" aria-label="Collage de frutas">
-            <svg viewBox="0 0 880 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stop-color="rgba(31,107,79,.18)"/>
-                  <stop offset="1" stop-color="rgba(215,179,95,.20)"/>
-                </linearGradient>
-                <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="rgba(2,6,23,.14)"/>
-                </filter>
-              </defs>
-
-              <rect x="0" y="0" width="880" height="420" fill="url(#g1)"/>
-              <circle cx="150" cy="120" r="78" fill="rgba(240,209,132,.55)" filter="url(#sh)"/>
-              <circle cx="250" cy="260" r="90" fill="rgba(31,107,79,.20)" filter="url(#sh)"/>
-              <circle cx="430" cy="150" r="88" fill="rgba(215,179,95,.30)" filter="url(#sh)"/>
-              <circle cx="650" cy="230" r="110" fill="rgba(31,107,79,.16)" filter="url(#sh)"/>
-              <circle cx="760" cy="120" r="70" fill="rgba(240,209,132,.42)" filter="url(#sh)"/>
-
-              <g transform="translate(110 80)">
-                <path d="M60 40c32 0 56 24 56 66S92 176 60 176 4 148 4 106 28 40 60 40Z" fill="rgba(31,107,79,.38)"/>
-                <path d="M54 30c8-18 26-26 44-18-8 18-26 26-44 18Z" fill="rgba(31,107,79,.70)"/>
-                <path d="M60 52c-14 6-22 18-22 32" stroke="rgba(255,255,255,.55)" stroke-width="8" stroke-linecap="round"/>
-              </g>
-
-              <g transform="translate(380 80)">
-                <circle cx="70" cy="90" r="64" fill="rgba(240,209,132,.88)"/>
-                <path d="M70 20c26 8 42 26 50 44-28 6-52-10-50-44Z" fill="rgba(31,107,79,.55)"/>
-                <circle cx="54" cy="84" r="6" fill="rgba(31,107,79,.20)"/>
-                <circle cx="86" cy="106" r="6" fill="rgba(31,107,79,.20)"/>
-              </g>
-
-              <g transform="translate(700 40)">
-                <circle cx="50" cy="90" r="30" fill="rgba(215,179,95,.55)"/>
-                <circle cx="95" cy="90" r="30" fill="rgba(215,179,95,.55)"/>
-                <circle cx="73" cy="132" r="30" fill="rgba(215,179,95,.55)"/>
-                <path d="M73 40c26 0 44 18 52 34-28 6-52-10-52-34Z" fill="rgba(31,107,79,.55)"/>
-                <path d="M73 44v34" stroke="rgba(31,107,79,.55)" stroke-width="10" stroke-linecap="round"/>
-              </g>
-
-              <g transform="translate(210 230)">
-                <path d="M40 30c60 120 160 170 230 184-44 44-128 42-196-26S-6 66 40 30Z" fill="rgba(215,179,95,.80)"/>
-                <path d="M40 30c60 120 160 170 230 184" stroke="rgba(31,107,79,.60)" stroke-width="10" stroke-linecap="round"/>
-              </g>
-            </svg>
-          </div>
-
-          <div class="fruitHeroChips">
-            <div class="miniChip"><span class="gold">★</span> Frescura</div>
-            <div class="miniChip"><span class="gold">★</span> Selección</div>
-            <div class="miniChip"><span class="gold">★</span> Presentación</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NOSOTROS -->
-    <section class="light" id="nosotros">
-      <div class="container">
-        <div class="section-title">
-          <div><h2>Nosotros</h2></div>
-        </div>
-
-        <div class="aboutGrid">
-          <div class="aboutCard">
-            <p>
-              En <span class="green">SALIFRESH</span> creemos que la fruta debe llegar fresca, bien seleccionada y con una presentación que transmita confianza desde el primer momento. Nuestro enfoque es ofrecer una experiencia cercana, cuidada y práctica para que pedir fruta sea tan fácil como disfrutarla.
-            </p>
-          </div>
-          <div class="aboutCard">
-            <p>
-              Queremos construir una marca que se sienta <span class="gold">limpia</span>, <span class="gold">confiable</span> y <span class="gold">cercana</span>. Conforme el proyecto avance, aquí también mostraremos cómo seleccionamos, empaquetamos y cuidamos la fruta para que llegue a casa en las mejores condiciones.
-            </p>
-          </div>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <b>Selección</b>
-            <span>Fruta elegida con enfoque en calidad y frescura.</span>
-          </div>
-          <div class="step">
-            <b>Empaque</b>
-            <span>Preparación ordenada, limpia y pensada para proteger el producto.</span>
-          </div>
-          <div class="step">
-            <b>Cuidado</b>
-            <span>Atención al detalle para mantener buena presentación.</span>
-          </div>
-          <div class="step">
-            <b>Entrega</b>
-            <span>Servicio cercano para Metepec y Toluca Centro.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INVENTARIO -->
-    <section class="light alt" id="inventario">
-      <div class="container">
-        <div class="section-title">
-          <div><h2>Inventario <span class="gold">visual</span></h2></div>
-        </div>
-
-        <div class="invHeader">
-          <div class="muted" style="font-weight:900;">Fotos, disponibilidad y botón para agregar a tu box premium.</div>
-          <div class="filters">
-            <button class="filterBtn active" data-filter="todos">Todos</button>
-            <button class="filterBtn" data-filter="disponible">Disponible</button>
-            <button class="filterBtn" data-filter="temporada">Temporada</button>
-            <button class="filterBtn" data-filter="agotado">Agotado</button>
-          </div>
-        </div>
-
-        <div class="inventoryGrid" id="inventoryCatalog"></div>
-      </div>
-    </section>
-
-    <!-- BOXES -->
-    <section class="light" id="cajas">
-      <div class="container">
-        <div class="section-title">
-          <div><h2><span class="gold">Boxes</span></h2></div>
-        </div>
-
-        <div class="products">
-          <div class="card">
-            <div class="pill">ESENCIAL</div>
-            <h3>Box Esencial</h3>
-            <p class="desc">La opción práctica: fruta de diario, lista para la semana.</p>
-            <div class="price">$229</div>
-            <ul class="list">
-              <li>Plátano (2 kg)</li>
-              <li>Manzana (1.5 kg)</li>
-              <li>Mandarina (1 kg)</li>
-              <li>Melón (1 pza) <span class="gold">cambiable</span></li>
-            </ul>
-
-            <div class="boxIcons">
-              <div class="boxIcon" id="icon_box_platano"></div>
-              <div class="boxIcon" id="icon_box_manzana"></div>
-              <div class="boxIcon" id="icon_box_mandarina"></div>
-              <div class="boxIcon" id="icon_box_melon"></div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn ghost" href="#arma" data-order="Box Esencial">Pedir</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="pill">BALANCE</div>
-            <h3>Box Balance</h3>
-            <p class="desc">Más variedad: ideal para familia o para compartir.</p>
-            <div class="price">$329</div>
-            <ul class="list">
-              <li>Plátano (3 kg)</li>
-              <li>Manzana (2 kg)</li>
-              <li>Mandarina (1.5 kg)</li>
-              <li>Melón (1 pza) <span class="gold">cambiable</span></li>
-              <li>Pera (0.5 kg) <span class="gold">opcional</span></li>
-            </ul>
-
-            <div class="boxIcons">
-              <div class="boxIcon" id="icon_box2_platano"></div>
-              <div class="boxIcon" id="icon_box2_manzana"></div>
-              <div class="boxIcon" id="icon_box2_mandarina"></div>
-              <div class="boxIcon" id="icon_box2_melon"></div>
-              <div class="boxIcon" id="icon_box2_pera"></div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn ghost" href="#arma" data-order="Box Balance">Pedir</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="pill">PREMIUM</div>
-            <h3><span class="gold">Premium</span> Personalizable</h3>
-            <p class="desc">Tú eliges: frutas, kilos y combinaciones con mayor flexibilidad.</p>
-            <div class="price">Tú eliges</div>
-            <ul class="list">
-              <li>Selecciona frutas</li>
-              <li>Elige kilos / cantidad</li>
-              <li>Confirma y pides</li>
-            </ul>
-
-            <div class="boxIcons">
-              <div class="boxIcon" id="icon_box3_uva"></div>
-              <div class="boxIcon" id="icon_box3_kiwi"></div>
-              <div class="boxIcon" id="icon_box3_berry"></div>
-              <div class="boxIcon" id="icon_box3_pera"></div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn dark" href="#arma">Personalizar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PREMIUM PERSONALIZABLE -->
-    <section class="light alt" id="arma">
-      <div class="container">
-        <div class="section-title">
-          <div><h2>Box <span class="gold">Premium Personalizable</span></h2></div>
-        </div>
-
-        <div class="builder">
-          <div class="panel">
-            <div class="pill">TAMAÑO</div>
-            <div class="sizes" id="sizes"></div>
-            <div class="notice" id="sizeNote"></div>
-
-            <div style="margin-top:14px">
-              <div class="pill">SELECCIONA TUS FRUTAS</div>
-              <div class="inv-grid" id="premiumBuilder"></div>
-              <div class="notice">
-                Puedes seleccionar frutas por kilo o por cantidad. Los productos premium suman extra. Si alguna fruta es de temporada, te confirmamos disponibilidad.
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="pill">RESUMEN</div>
-            <div class="summary">
-              <div class="row"><div>Tamaño</div><span id="sumSize">—</span></div>
-              <div class="row"><div>Peso objetivo</div><span id="sumTarget">—</span></div>
-              <div class="row"><div>Peso seleccionado</div><span id="sumWeight">0 kg</span></div>
-              <div class="row"><div>Base</div><span id="sumBase">$0</span></div>
-              <div class="row"><div>Extras <span class="gold">premium</span></div><span id="sumExtras">$0</span></div>
-              <hr style="border:none; border-top:1px solid var(--border)">
-              <div class="row" style="font-size:18px"><div>Total estimado</div><span id="sumTotal">$0</span></div>
-
-              <div>
-                <ul id="sumList"></ul>
-              </div>
-
-              <div class="grid2">
-                <label class="field">Nombre
-                  <input id="name" placeholder="Tu nombre" />
-                </label>
-                <label class="field">Zona
-                  <select id="zone">
-                    <option value="Metepec">Metepec</option>
-                    <option value="Toluca Centro">Toluca Centro</option>
-                  </select>
-                </label>
-              </div>
-              <label class="field">Dirección (opcional)
-                <input id="address" placeholder="Calle, colonia, referencia" />
-              </label>
-
-              <button class="btn dark" id="sendCustom" type="button">Confirmar y pedir por WhatsApp</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ZONAS -->
-    <section id="zonas">
-      <div class="container">
-        <div class="section-title">
-          <div><h2>Zonas de <span class="gold">entrega</span></h2></div>
-        </div>
-
-        <div class="grid-3">
-          <div class="zoneCard"><b>Toluca Centro</b><span>Disponible</span></div>
-          <div class="zoneCard"><b>Metepec</b><span>Disponible</span></div>
-          <div class="zoneCard"><b>Política simple</b><span><span class="gold">Gratis</span> desde $299 • Envío $25</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="light" id="faq">
-      <div class="container">
-        <div class="section-title">
-          <div><h2><span class="gold">FAQ</span></h2></div>
-        </div>
-
-        <details>
-          <summary>¿Puedo cambiar una fruta dentro de un box?</summary>
-          <p>Sí. En Esencial y Balance, puedes ajustar algunas frutas al confirmar por WhatsApp según disponibilidad.</p>
-        </details>
-        <details>
-          <summary>¿Cómo funcionan los productos de temporada?</summary>
-          <p>En el inventario aparecen marcados como temporada. Puedes agregarlos, y te confirmamos si siguen disponibles al cerrar tu pedido.</p>
-        </details>
-        <details>
-          <summary>¿Qué pasa si una fruta está agotada?</summary>
-          <p>La verás marcada como agotada y no se podrá agregar al box hasta que vuelva a estar disponible.</p>
-        </details>
-        <details>
-          <summary>¿Qué pasa si una fruta no sale bien?</summary>
-          <p>Te apoyamos con revisión y seguimiento. Queremos que tu experiencia sea confiable desde el primer pedido.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="light alt" id="contactanos">
-      <div class="container">
-        <div class="section-title">
-          <div><h2>Contáctanos</h2></div>
-        </div>
-
-        <div class="contactGrid">
-          <div class="contactCard">
-            <div class="contactList">
-              <div class="contactItem">
-                <div class="fruitIcon">📲</div>
-                <div>WhatsApp</div>
-              </div>
-              <div class="contactItem">
-                <div class="fruitIcon">📸</div>
-                <div>Instagram</div>
-              </div>
-              <div class="contactItem">
-                <div class="fruitIcon">✉️</div>
-                <div>Correo</div>
-              </div>
-              <div class="contactItem">
-                <div class="fruitIcon">📞</div>
-                <div>Teléfono</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="contactCard">
-            <label class="field">Nombre
-              <input placeholder="Tu nombre" />
-            </label>
-            <label class="field">Correo
-              <input placeholder="tucorreo@ejemplo.com" />
-            </label>
-            <label class="field">Mensaje
-              <textarea rows="5" placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
-            </label>
-            <button class="btn dark">Enviar mensaje</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <a class="btn" href="https://wa.me/5217220000000" target="_blank">Enviar WhatsApp</a>
+  </section>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <div style="color:var(--green); font-weight:1000; letter-spacing:.12em;">SALIFRESH</div>
-        <div class="footer-muted" style="margin-top:8px;">Metepec • Toluca Centro</div>
-      </div>
-      <div>
-        <div style="font-weight:1000;">Contacto</div>
-        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn secondary" href="#contactanos">Contáctanos</a>
-          <a class="btn secondary" href="#arma">Premium Personalizable</a>
-        </div>
-        <div class="footer-muted" style="margin-top:12px; font-size:12px;">© <span id="year"></span> SALIFRESH.</div>
-      </div>
-    </div>
+    <img src="logo-pera.png" alt="Logo SALIFRESH">
+    <p><strong>SALIFRESH</strong></p>
+    <p>Fruta fresca, selección premium.</p>
   </footer>
 
-  <script>
-    // =========================
-    // CONFIG
-    // =========================
-    const WHATSAPP_NUMBER = "5210000000000"; // Cambia por tu número
-
-    // =========================
-    // MENU + MODALS
-    // =========================
-    const menuOverlay = document.getElementById("menuOverlay");
-    const sideMenu = document.getElementById("sideMenu");
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-
-    function openSideMenu(){
-      menuOverlay.classList.add("active");
-      sideMenu.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-    function closeSideMenu(){
-      menuOverlay.classList.remove("active");
-      sideMenu.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    openMenu.addEventListener("click", openSideMenu);
-    closeMenu.addEventListener("click", closeSideMenu);
-    menuOverlay.addEventListener("click", closeSideMenu);
-
-    document.querySelectorAll(".menuNav").forEach(link=>{
-      link.addEventListener("click", ()=> closeSideMenu());
-    });
-
-    function openModal(id){
-      document.getElementById(id).classList.add("active");
-      document.body.style.overflow = "hidden";
-      closeSideMenu();
-    }
-    function closeModal(id){
-      document.getElementById(id).classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    document.getElementById("openRegister").addEventListener("click", (e)=>{
-      e.preventDefault();
-      openModal("registerModal");
-    });
-    document.getElementById("openLogin").addEventListener("click", (e)=>{
-      e.preventDefault();
-      openModal("loginModal");
-    });
-
-    document.querySelectorAll("[data-close-modal]").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        closeModal(btn.getAttribute("data-close-modal"));
-      });
-    });
-
-    document.querySelectorAll(".modalOverlay").forEach(overlay=>{
-      overlay.addEventListener("click", (e)=>{
-        if(e.target === overlay){
-          overlay.classList.remove("active");
-          document.body.style.overflow = "";
-        }
-      });
-    });
-
-    // =========================
-    // HELPERS
-    // =========================
-    function waLink(message){
-      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-    }
-    function money(n){
-      return "$" + Number(n).toFixed(0);
-    }
-    const $ = (id)=>document.getElementById(id);
-
-    // =========================
-    // ICONS
-    // =========================
-    const iconMap = {
-      platano: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M18 18c10 20 24 30 32 32-6 6-18 6-28-4S10 24 18 18Z" fill="rgba(215,179,95,.85)"/>
-          <path d="M18 18c10 20 24 30 32 32" stroke="rgba(31,107,79,.65)" stroke-width="3" stroke-linecap="round"/>
-        </svg>`,
-      mandarina: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="34" r="16" fill="rgba(240,209,132,.85)"/>
-          <path d="M32 16c6 2 10 6 12 10-6 1-12-2-12-10Z" fill="rgba(31,107,79,.55)"/>
-          <circle cx="26" cy="32" r="2" fill="rgba(31,107,79,.25)"/>
-          <circle cx="36" cy="38" r="2" fill="rgba(31,107,79,.25)"/>
-        </svg>`,
-      manzana: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M32 18c8 0 16 6 16 18S40 56 32 56 16 48 16 36s8-18 16-18Z" fill="rgba(31,107,79,.35)"/>
-          <path d="M30 16c2-6 8-8 14-6-2 6-8 8-14 6Z" fill="rgba(31,107,79,.65)"/>
-          <path d="M32 18c-4 2-7 6-7 10" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round"/>
-        </svg>`,
-      melon: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M18 42c0-14 10-24 24-24 2 0 4 0 6 .5C42 12 34 10 28 12 16 16 10 30 14 42" fill="rgba(31,107,79,.18)"/>
-          <path d="M18 42c2 8 8 14 16 14 10 0 18-8 18-18 0-8-5-15-12-17" fill="rgba(240,209,132,.75)"/>
-          <path d="M22 44c6 6 12 8 18 6" stroke="rgba(31,107,79,.55)" stroke-width="3" stroke-linecap="round"/>
-        </svg>`,
-      pera: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M36 14c-3 2-4 6-2 10 6 6 12 8 12 18 0 10-8 18-18 18S10 52 10 42c0-10 8-14 14-18 4-3 6-8 4-12" fill="rgba(31,107,79,.28)"/>
-          <path d="M34 14c2-4 6-6 12-4-2 6-6 8-12 4Z" fill="rgba(31,107,79,.65)"/>
-        </svg>`,
-      uvas: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <circle cx="26" cy="34" r="8" fill="rgba(215,179,95,.55)"/>
-          <circle cx="38" cy="34" r="8" fill="rgba(215,179,95,.55)"/>
-          <circle cx="32" cy="44" r="8" fill="rgba(215,179,95,.55)"/>
-          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
-          <path d="M32 18v10" stroke="rgba(31,107,79,.55)" stroke-width="3" stroke-linecap="round"/>
-        </svg>`,
-      kiwi: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="34" r="16" fill="rgba(31,107,79,.22)"/>
-          <circle cx="32" cy="34" r="10" fill="rgba(240,209,132,.45)"/>
-          <circle cx="32" cy="34" r="3" fill="rgba(31,107,79,.35)"/>
-          <path d="M24 34h16M32 26v16" stroke="rgba(31,107,79,.25)" stroke-width="2" stroke-linecap="round"/>
-        </svg>`,
-      fresa: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M18 30c0-10 6-16 14-16s14 6 14 16c0 14-10 26-14 26S18 44 18 30Z" fill="rgba(215,179,95,.40)"/>
-          <path d="M24 14c4 2 8 2 16 0-2 8-6 10-8 10s-6-2-8-10Z" fill="rgba(31,107,79,.60)"/>
-          <circle cx="28" cy="34" r="1.6" fill="rgba(31,107,79,.35)"/>
-          <circle cx="36" cy="38" r="1.6" fill="rgba(31,107,79,.35)"/>
-          <circle cx="34" cy="30" r="1.6" fill="rgba(31,107,79,.35)"/>
-        </svg>`,
-      berries: `
-        <svg viewBox="0 0 64 64" fill="none">
-          <circle cx="28" cy="34" r="6" fill="rgba(31,107,79,.25)"/>
-          <circle cx="36" cy="34" r="6" fill="rgba(31,107,79,.25)"/>
-          <circle cx="32" cy="42" r="6" fill="rgba(31,107,79,.25)"/>
-          <circle cx="32" cy="26" r="6" fill="rgba(31,107,79,.25)"/>
-          <path d="M32 18c6 0 10 4 12 8-6 1-12-2-12-8Z" fill="rgba(31,107,79,.55)"/>
-        </svg>`
-    };
-
-    function getIcon(key){
-      return iconMap[key] || `
-        <svg viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="16" fill="rgba(31,107,79,.12)"/>
-          <path d="M24 34h16" stroke="rgba(215,179,95,.75)" stroke-width="3" stroke-linecap="round"/>
-        </svg>`;
-    }
-
-    // =========================
-    // INVENTORY DATA
-    // =========================
-    // status: disponible | temporada | agotado
-    // photo: aquí puedes poner luego la URL de tu foto real
-    const inventory = [
-      { key:"uva_verde", name:"Uva verde", unit:"1 bolsa", step:1, weightKg:0.5, premium:true, extra:30, status:"disponible", icon:"uvas", photo:"" },
-      { key:"uva_roja", name:"Uva roja", unit:"1 bolsa", step:1, weightKg:0.5, premium:true, extra:25, status:"disponible", icon:"uvas", photo:"" },
-
-      { key:"manzana_amarilla_usa", name:"Manzana amarilla americana", unit:"1 kg", step:1, weightKg:1, premium:true, extra:20, status:"disponible", icon:"manzana", photo:"" },
-      { key:"manzana_amarilla_nac", name:"Manzana amarilla nacional", unit:"1 kg", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"manzana", photo:"" },
-      { key:"manzana_verde", name:"Manzana verde", unit:"1 kg", step:1, weightKg:1, premium:true, extra:15, status:"disponible", icon:"manzana", photo:"" },
-      { key:"manzana_roja", name:"Manzana roja", unit:"1 kg", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"manzana", photo:"" },
-      { key:"manzana_gala", name:"Manzana gala", unit:"1 kg", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"manzana", photo:"" },
-
-      { key:"platano", name:"Plátano", unit:"1 kg", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"platano", photo:"" },
-      { key:"kiwi", name:"Kiwi", unit:"1 kg", step:1, weightKg:1, premium:true, extra:35, status:"temporada", icon:"kiwi", photo:"" },
-      { key:"mandarina", name:"Mandarina", unit:"1 kg", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"mandarina", photo:"" },
-
-      { key:"fresa", name:"Fresa", unit:"1 domo", step:1, weightKg:0.25, premium:true, extra:25, status:"disponible", icon:"fresa", photo:"" },
-      { key:"frambuesa", name:"Frambuesa", unit:"1 domo", step:1, weightKg:0.17, premium:true, extra:30, status:"disponible", icon:"berries", photo:"" },
-      { key:"blueberry", name:"Blueberry", unit:"1 domo", step:1, weightKg:0.17, premium:true, extra:30, status:"disponible", icon:"berries", photo:"" },
-      { key:"zarzamora", name:"Zarzamora", unit:"1 domo", step:1, weightKg:0.17, premium:true, extra:25, status:"disponible", icon:"berries", photo:"" },
-
-      { key:"pera_verde", name:"Pera verde", unit:"1 kg", step:1, weightKg:1, premium:true, extra:20, status:"disponible", icon:"pera", photo:"" },
-      { key:"pera_cafe", name:"Pera café", unit:"1 kg", step:1, weightKg:1, premium:true, extra:15, status:"disponible", icon:"pera", photo:"" },
-
-      { key:"melon", name:"Melón", unit:"1 pza", step:1, weightKg:1, premium:false, extra:0, status:"disponible", icon:"melon", photo:"" },
-
-      { key:"nectarina", name:"Nectarina", unit:"1 kg", step:1, weightKg:1, premium:true, extra:25, status:"temporada", icon:"manzana", photo:"" },
-      { key:"persimo", name:"Pérsimo", unit:"1 bolsa", step:1, weightKg:0.7, premium:true, extra:25, status:"temporada", icon:"manzana", photo:"" },
-      { key:"granada", name:"Granada", unit:"1 kg", step:1, weightKg:1, premium:true, extra:25, status:"agotado", icon:"mandarina", photo:"" }
-    ];
-
-    // =========================
-    // CATALOG
-    // =========================
-    let currentFilter = "todos";
-
-    function renderInventoryCatalog(){
-      const wrap = $("inventoryCatalog");
-      wrap.innerHTML = "";
-
-      inventory
-        .filter(item => currentFilter === "todos" ? true : item.status === currentFilter)
-        .forEach(item=>{
-          const card = document.createElement("div");
-          card.className = "invCard";
-
-          const photoHTML = item.photo
-            ? `<img src="${item.photo}" alt="${item.name}">`
-            : getIcon(item.icon);
-
-          const statusClass = item.status;
-          const statusText = item.status === "disponible"
-            ? "Disponible"
-            : item.status === "temporada"
-            ? "Temporada"
-            : "Agotado";
-
-          const buttonHTML = item.status === "agotado"
-            ? `<button class="btn secondary" disabled style="opacity:.6; cursor:not-allowed;">Agotado</button>`
-            : `<button class="btn dark" data-add-from-catalog="${item.key}">Agregar a mi box</button>`;
-
-          card.innerHTML = `
-            <div class="invImage">${photoHTML}</div>
-            <div class="invBody">
-              <span class="status ${statusClass}">${statusText}</span>
-              <h4>${item.name}</h4>
-              <div class="invMeta">${item.unit}${item.premium ? ` • <span class="gold">premium</span>` : ""}</div>
-              ${buttonHTML}
-            </div>
-          `;
-          wrap.appendChild(card);
-        });
-
-      document.querySelectorAll("[data-add-from-catalog]").forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          const key = btn.getAttribute("data-add-from-catalog");
-          addToPremiumBox(key);
-          document.getElementById("arma").scrollIntoView({behavior:"smooth", block:"start"});
-        });
-      });
-    }
-
-    document.querySelectorAll(".filterBtn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        document.querySelectorAll(".filterBtn").forEach(b=>b.classList.remove("active"));
-        btn.classList.add("active");
-        currentFilter = btn.getAttribute("data-filter");
-        renderInventoryCatalog();
-      });
-    });
-
-    // =========================
-    // BOX ICONS
-    // =========================
-    function fillBoxIcons(){
-      const set = (id, key)=>{
-        const el = document.getElementById(id);
-        if(el) el.innerHTML = getIcon(key);
-      };
-      set("icon_box_platano","platano");
-      set("icon_box_manzana","manzana");
-      set("icon_box_mandarina","mandarina");
-      set("icon_box_melon","melon");
-
-      set("icon_box2_platano","platano");
-      set("icon_box2_manzana","manzana");
-      set("icon_box2_mandarina","mandarina");
-      set("icon_box2_melon","melon");
-      set("icon_box2_pera","pera");
-
-      set("icon_box3_uva","uvas");
-      set("icon_box3_kiwi","kiwi");
-      set("icon_box3_berry","berries");
-      set("icon_box3_pera","pera");
-    }
-
-    // =========================
-    // PREMIUM BUILDER
-    // =========================
-    const sizes = [
-      { id:"S", label:"Box S", targetKg:5, base:229 },
-      { id:"M", label:"Box M", targetKg:8, base:329 },
-      { id:"L", label:"Box L", targetKg:12, base:599 },
-    ];
-
-    const state = {
-      size: sizes[0],
-      qty: Object.fromEntries(inventory.map(i => [i.key, 0]))
-    };
-
-    function formatQty(item, q){
-      return Number.isInteger(q) ? String(q) : q.toFixed(1);
-    }
-
-    function setSizeById(id){
-      const found = sizes.find(s=>s.id===id);
-      if(found){
-        state.size = found;
-        renderSizes();
-        renderSummary();
-      }
-    }
-
-    function renderSizes(){
-      const wrap = $("sizes");
-      wrap.innerHTML = "";
-      sizes.forEach(s=>{
-        const el = document.createElement("div");
-        el.className = "chip" + (state.size.id === s.id ? " active" : "");
-        el.innerHTML = `<span style="font-weight:1000">${s.label}</span><span style="color:var(--muted); font-weight:950">${s.targetKg} kg</span>`;
-        el.onclick = ()=>{ state.size = s; renderSizes(); renderSummary(); };
-        wrap.appendChild(el);
-      });
-      $("sizeNote").innerHTML = `Base <span class="gold">${money(state.size.base)}</span> • Objetivo ${state.size.targetKg} kg`;
-    }
-
-    function renderPremiumBuilder(){
-      const wrap = $("premiumBuilder");
-      wrap.innerHTML = "";
-
-      inventory.forEach(item=>{
-        const el = document.createElement("div");
-        el.className = "item";
-
-        const icon = getIcon(item.icon);
-        const avail = item.status === "agotado" ? " (agotado)" : "";
-        const priceTag = item.premium ? `+${money(item.extra)} extra` : "incluido";
-
-        el.innerHTML = `
-          <div class="item-top">
-            <div class="item-left">
-              <div class="fruitIcon">${icon}</div>
-              <div>
-                <b>${item.name}${avail}</b><br/>
-                <small>${item.unit} • ${priceTag}</small>
-              </div>
-            </div>
-            <div class="qty">
-              <button ${item.status === "agotado" ? "disabled" : ""} data-k="${item.key}" data-d="-1">−</button>
-              <span id="q_${item.key}">${formatQty(item, state.qty[item.key] || 0)}</span>
-              <button ${item.status === "agotado" ? "disabled" : ""} data-k="${item.key}" data-d="1">+</button>
-            </div>
-          </div>
-        `;
-        wrap.appendChild(el);
-      });
-
-      wrap.querySelectorAll("button[data-k]").forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          const key = btn.getAttribute("data-k");
-          const dir = Number(btn.getAttribute("data-d"));
-          const item = inventory.find(i=>i.key===key);
-          if(!item) return;
-          const next = Math.max(0, Number(state.qty[key] || 0) + dir * item.step);
-          state.qty[key] = next;
-          $("q_"+key).textContent = formatQty(item, next);
-          renderSummary();
-        });
-      });
-    }
-
-    function addToPremiumBox(key){
-      const item = inventory.find(i=>i.key===key);
-      if(!item || item.status === "agotado") return;
-      state.qty[key] = Number(state.qty[key] || 0) + item.step;
-      const label = $("q_"+key);
-      if(label) label.textContent = formatQty(item, state.qty[key]);
-      renderSummary();
-    }
-
-    function calc(){
-      let weight = 0;
-      let extras = 0;
-      const lines = [];
-
-      inventory.forEach(item=>{
-        const q = Number(state.qty[item.key] || 0);
-        if(q > 0){
-          weight += q * item.weightKg;
-          if(item.premium) extras += q * item.extra;
-          lines.push({
-            name:item.name,
-            q,
-            unit:item.unit,
-            premium:item.premium,
-            extra:item.extra
-          });
-        }
-      });
-
-      return {
-        weight,
-        extras,
-        total: state.size.base + extras,
-        lines
-      };
-    }
-
-    function renderSummary(){
-      const { weight, extras, total, lines } = calc();
-      $("sumSize").textContent = state.size.label;
-      $("sumTarget").textContent = state.size.targetKg + " kg";
-      $("sumWeight").textContent = weight.toFixed(1) + " kg";
-      $("sumBase").textContent = money(state.size.base);
-      $("sumExtras").textContent = money(extras);
-      $("sumTotal").textContent = money(total);
-
-      const ul = $("sumList");
-      ul.innerHTML = "";
-      if(lines.length === 0){
-        ul.innerHTML = "<li>Selecciona frutas y cantidades.</li>";
-      } else {
-        lines.forEach(line=>{
-          const li = document.createElement("li");
-          const extraText = line.premium ? ` • +${money(line.q * line.extra)} extra` : "";
-          li.textContent = `${line.q}× ${line.name} (${line.unit})${extraText}`;
-          ul.appendChild(li);
-        });
-      }
-    }
-
-    function customMessage(){
-      const name = ($("name").value || "").trim();
-      const zone = $("zone").value;
-      const address = ($("address").value || "").trim();
-      const { weight, extras, total, lines } = calc();
-
-      let msg = `Hola SALIFRESH 👋\n\n`;
-      if(name) msg += `Soy ${name}.\n`;
-      msg += `Quiero *Premium Personalizable*\n`;
-      msg += `Tamaño: *${state.size.label}* (objetivo ${state.size.targetKg} kg)\n`;
-      msg += `Peso seleccionado: *${weight.toFixed(1)} kg*\n`;
-      msg += `Zona: *${zone}*\n`;
-      if(address) msg += `Dirección/Referencia: ${address}\n`;
-
-      msg += `\nSelección:\n`;
-      if(lines.length === 0){
-        msg += `- (sin selección)\n`;
-      } else {
-        lines.forEach(line=>{
-          msg += `- ${line.q}× ${line.name} (${line.unit})${line.premium ? ` + extra` : ""}\n`;
-        });
-      }
-
-      msg += `\nBase: ${money(state.size.base)}\n`;
-      msg += `Extras: ${money(extras)}\n`;
-      msg += `Total estimado: *${money(total)}*\n`;
-      msg += `\n¿Me confirmas disponibilidad y horario de entrega?`;
-      return msg;
-    }
-
-    $("sendCustom").addEventListener("click", ()=>{
-      window.open(waLink(customMessage()), "_blank");
-    });
-
-    // =========================
-    // BOX LINKS
-    // =========================
-    document.querySelectorAll("[data-order]").forEach(btn=>{
-      btn.addEventListener("click", (e)=>{
-        e.preventDefault();
-        window.open(waLink(`Hola SALIFRESH 👋\n\nQuiero pedir: *${btn.getAttribute("data-order")}*\n\n¿Me confirmas disponibilidad y horario de entrega?`), "_blank");
-      });
-    });
-
-    // =========================
-    // INIT
-    // =========================
-    document.getElementById("year").textContent = new Date().getFullYear();
-    fillBoxIcons();
-    renderInventoryCatalog();
-    renderSizes();
-    renderPremiumBuilder();
-    renderSummary();
-  </script>
 </body>
 </html>
