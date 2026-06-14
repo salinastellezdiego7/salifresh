@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es-MX">
 <head>
@@ -34,6 +33,7 @@ body{
 }
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit}
 .container{width:min(1120px,92vw);margin:0 auto}
 .gold{color:var(--gold);font-weight:1000}
 .red{color:var(--red);font-weight:1000}
@@ -118,6 +118,8 @@ img{max-width:100%;display:block}
 }
 .btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--border)}
 .btn.ghost{background:#fff;color:var(--green);border:1px solid rgba(31,107,79,.18)}
+.btn.full{width:100%}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
 
 .hero{
   padding:64px 0 34px;
@@ -254,8 +256,52 @@ ul.list{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
 .status.temporada{background:rgba(215,179,95,.16);color:#7b5a10;border:1px solid rgba(215,179,95,.20)}
 .status.agotado{background:rgba(193,18,31,.10);color:var(--red);border:1px solid rgba(193,18,31,.20)}
 .invMeta{color:var(--muted);font-size:13px;font-weight:900;line-height:1.5}
+.qtyBox{
+  display:grid;
+  gap:8px;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(31,107,79,.12);
+  background:linear-gradient(180deg,rgba(31,107,79,.04),rgba(255,255,255,.95));
+}
+.qtyLabel{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:950;
+  line-height:1.35;
+}
+.qtyControl{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.qtyControl button{
+  width:36px;height:36px;border-radius:12px;
+  border:1px solid rgba(31,107,79,.18);
+  background:#fff;cursor:pointer;font-weight:1000;color:var(--green);
+  box-shadow:0 8px 18px rgba(2,6,23,.06);
+}
+.qtyControl button:hover{background:rgba(31,107,79,.06)}
+.qtyControl span{
+  min-width:70px;
+  text-align:center;
+  font-weight:1000;
+  color:var(--green);
+}
+.selectedBadge{
+  display:inline-flex;
+  width:max-content;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(215,179,95,.14);
+  border:1px solid rgba(215,179,95,.30);
+  color:#6a4e12;
+  font-size:12px;
+  font-weight:1000;
+}
 
-.builder{display:grid;grid-template-columns:.92fr 1.08fr;gap:14px;align-items:start}
+.checkoutGrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px;align-items:start}
 .panel{
   border-radius:var(--radius);background:#fff;border:1px solid var(--border);
   box-shadow:var(--shadow);padding:18px;
@@ -267,27 +313,9 @@ ul.list{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
   font-weight:950;color:var(--green);user-select:none;
 }
 .chip.active{
-  background:linear-gradient(180deg,rgba(31,107,79,.06),rgba(31,107,79,.02));
+  background:linear-gradient(180deg,rgba(31,107,79,.09),rgba(31,107,79,.03));
   box-shadow:0 10px 18px rgba(2,6,23,.08);
 }
-.invGridBuilder{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-.item{
-  border:1px solid rgba(31,107,79,.14);border-radius:14px;padding:12px;
-  display:grid;gap:8px;background:#fff;
-}
-.itemTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.itemLeft{display:flex;gap:10px;align-items:center}
-.fruitIcon{
-  width:40px;height:40px;border-radius:14px;display:grid;place-items:center;
-  background:linear-gradient(180deg,rgba(31,107,79,.08),rgba(215,179,95,.10));
-  border:1px solid rgba(31,107,79,.12);flex:0 0 40px;overflow:hidden;
-}
-.qty{display:flex;align-items:center;gap:8px}
-.qty button{
-  width:34px;height:34px;border-radius:10px;border:1px solid rgba(31,107,79,.18);
-  background:#fff;cursor:pointer;font-weight:1000;color:var(--green);
-}
-.qty span{min-width:44px;text-align:center;font-weight:1000;color:var(--green)}
 .notice{
   margin-top:10px;padding:10px 12px;border-radius:14px;background:rgba(31,107,79,.08);
   border:1px solid rgba(31,107,79,.12);color:var(--muted);
@@ -295,8 +323,17 @@ ul.list{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
 }
 .summary{display:grid;gap:10px}
 .summary .row{display:flex;justify-content:space-between;gap:12px;font-weight:950}
-.summary .row span{color:var(--muted);font-weight:950}
+.summary .row span{color:var(--muted);font-weight:950;text-align:right}
 .summary ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
+.summaryEmpty{
+  padding:12px;
+  border-radius:14px;
+  background:rgba(193,18,31,.06);
+  border:1px solid rgba(193,18,31,.10);
+  color:var(--muted);
+  font-weight:900;
+  line-height:1.5;
+}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .field{
   display:grid;gap:6px;margin-bottom:10px;font-size:13px;font-weight:900;color:var(--muted);
@@ -334,6 +371,11 @@ details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
   border:1px solid rgba(31,107,79,.12);border-radius:14px;
   background:#fff;font-weight:900;color:var(--muted);
 }
+.fruitIcon{
+  width:40px;height:40px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(180deg,rgba(31,107,79,.08),rgba(215,179,95,.10));
+  border:1px solid rgba(31,107,79,.12);flex:0 0 40px;overflow:hidden;
+}
 
 footer{
   padding:34px 0 44px;background:var(--black);color:white;
@@ -363,8 +405,7 @@ footer{
   .stats{grid-template-columns:1fr}
   .products{grid-template-columns:1fr}
   .inventoryGrid{grid-template-columns:1fr 1fr}
-  .builder{grid-template-columns:1fr}
-  .invGridBuilder{grid-template-columns:1fr}
+  .checkoutGrid{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
   .contactGrid{grid-template-columns:1fr}
   .footerGrid{grid-template-columns:1fr}
@@ -434,14 +475,14 @@ footer{
     <a href="#nosotros" class="menuLink menuNav">Nosotros</a>
     <a href="#inventario" class="menuLink menuNav">Inventario</a>
     <a href="#cajas" class="menuLink menuNav">Boxes</a>
-    <a href="#arma" class="menuLink menuNav">Box Premium Personalizable</a>
+    <a href="#arma" class="menuLink menuNav">Resumen del pedido</a>
     <a href="#zonas" class="menuLink menuNav">Zonas</a>
     <a href="#faq" class="menuLink menuNav">FAQ</a>
     <a href="#contactanos" class="menuLink menuNav">Contáctanos</a>
 
     <div class="menuCTA">
-      <a href="#arma" class="btn dark menuNav">Armar mi box</a>
-      <a href="#inventario" class="btn secondary menuNav">Ver inventario</a>
+      <a href="#inventario" class="btn dark menuNav">Armar mi box</a>
+      <a href="#arma" class="btn secondary menuNav">Ver resumen</a>
     </div>
   </div>
 </aside>
@@ -494,12 +535,12 @@ footer{
       <div class="heroLine"></div>
       <p class="sub">
         Boxes diseñadas para quienes buscan calidad, frescura y comodidad.
-        Elige una box lista o arma una opción premium con tus frutas favoritas.
+        Elige una box lista o arma una opción premium desde el inventario.
       </p>
 
       <div class="heroActions">
-        <a class="btn dark" href="#arma">Armar mi box</a>
-        <a class="btn secondary" href="#inventario">Ver inventario</a>
+        <a class="btn dark" href="#inventario">Armar mi box</a>
+        <a class="btn secondary" href="#arma">Ver resumen</a>
       </div>
 
       <div class="stats">
@@ -608,11 +649,13 @@ footer{
 <section class="light alt" id="inventario">
   <div class="container">
     <div class="sectionTitle">
-      <h2>Inventario <span class="gold">visual</span></h2>
+      <h2>Inventario <span class="gold">interactivo</span></h2>
     </div>
 
     <div class="invHeader">
-      <div class="muted" style="font-weight:900">Disponibilidad para agregar a tu box premium.</div>
+      <div class="muted" style="font-weight:900">
+        Agrega tus productos desde aquí. El resumen se actualiza automáticamente abajo.
+      </div>
       <div class="filters">
         <button class="filterBtn active" data-filter="todos">Todos</button>
         <button class="filterBtn" data-filter="disponible">Disponible</button>
@@ -622,6 +665,10 @@ footer{
     </div>
 
     <div class="inventoryGrid" id="inventoryCatalog"></div>
+
+    <div class="notice">
+      Usa los botones + y - para seleccionar cantidades. En productos por kilo, cada clic suma 1 kg. En productos por pieza, bolsa, domo o charola, se muestra el peso aproximado en el resumen.
+    </div>
   </div>
 </section>
 
@@ -643,7 +690,7 @@ footer{
           <li>Mandarina</li>
           <li>Melón <span class="gold">cambiable</span></li>
         </ul>
-        <div class="productActions"><a class="btn ghost" href="#arma">Pedir</a></div>
+        <div class="productActions"><button class="btn ghost" data-pick-size="esencial">Elegir esta box</button></div>
       </div>
 
       <div class="card">
@@ -658,20 +705,20 @@ footer{
           <li>Melón <span class="gold">cambiable</span></li>
           <li>Pera <span class="gold">opcional</span></li>
         </ul>
-        <div class="productActions"><a class="btn ghost" href="#arma">Pedir</a></div>
+        <div class="productActions"><button class="btn ghost" data-pick-size="balance">Elegir esta box</button></div>
       </div>
 
       <div class="card">
         <div class="pill">PREMIUM</div>
         <h3><span class="gold">Premium</span> Personalizable</h3>
-        <p class="desc">Tú eliges: frutas, kilos y combinaciones.</p>
+        <p class="desc">Tú eliges desde el inventario: frutas, kilos y combinaciones.</p>
         <div class="price">Tú eliges</div>
         <ul class="list">
-          <li>Selecciona frutas</li>
+          <li>Selecciona en el inventario</li>
           <li>Elige kilos o cantidades</li>
           <li>Confirma por WhatsApp</li>
         </ul>
-        <div class="productActions"><a class="btn dark" href="#arma">Personalizar</a></div>
+        <div class="productActions"><button class="btn dark" data-pick-size="premium">Personalizar</button></div>
       </div>
     </div>
   </div>
@@ -680,24 +727,22 @@ footer{
 <section class="light alt" id="arma">
   <div class="container">
     <div class="sectionTitle">
-      <h2>Box <span class="gold">Premium Personalizable</span></h2>
+      <h2>Resumen de tu <span class="gold">pedido</span></h2>
     </div>
 
-    <div class="builder">
+    <div class="checkoutGrid">
       <div class="panel">
-        <div class="pill">TAMAÑO</div>
+        <div class="pill">TAMAÑO DE BOX</div>
         <div class="sizes" id="sizes"></div>
         <div class="notice" id="sizeNote"></div>
-
-        <div style="margin-top:14px">
-          <div class="pill">SELECCIONA TUS FRUTAS</div>
-          <div class="invGridBuilder" id="premiumBuilder"></div>
-          <div class="notice">Los productos premium pueden sumar extra. La disponibilidad se confirma al cerrar el pedido.</div>
+        <div class="notice">
+          La selección de frutas se hace directamente en el inventario. Aquí solo revisas tu resumen y confirmas tu pedido.
         </div>
+        <a class="btn secondary full" href="#inventario" style="margin-top:12px">Volver al inventario</a>
       </div>
 
       <div class="panel">
-        <div class="pill">RESUMEN</div>
+        <div class="pill">TU PEDIDO</div>
         <div class="summary">
           <div class="row"><div>Tamaño</div><span id="sumSize">—</span></div>
           <div class="row"><div>Peso objetivo</div><span id="sumTarget">—</span></div>
@@ -706,6 +751,10 @@ footer{
           <div class="row"><div>Extras <span class="gold">premium</span></div><span id="sumExtras">$0</span></div>
           <hr style="border:none;border-top:1px solid var(--border)">
           <div class="row" style="font-size:18px"><div>Total estimado</div><span id="sumTotal">$0</span></div>
+
+          <div id="emptyMsg" class="summaryEmpty">
+            Todavía no has agregado productos. Ve al inventario y usa los botones + para armar tu box.
+          </div>
           <ul id="sumList"></ul>
 
           <div class="grid2">
@@ -744,7 +793,7 @@ footer{
   <div class="container">
     <div class="sectionTitle"><h2><span class="gold">FAQ</span></h2></div>
     <details><summary>¿Puedo cambiar una fruta dentro de un box?</summary><p>Sí. En Esencial y Balance puedes ajustar algunas frutas al confirmar por WhatsApp según disponibilidad.</p></details>
-    <details><summary>¿Cómo funcionan los productos de temporada?</summary><p>Puedes agregarlos, y te confirmamos si siguen disponibles al cerrar tu pedido.</p></details>
+    <details><summary>¿Cómo funcionan los productos de temporada?</summary><p>Puedes agregarlos desde el inventario y te confirmamos si siguen disponibles al cerrar tu pedido.</p></details>
     <details><summary>¿Qué pasa si una fruta está agotada?</summary><p>La verás marcada como agotada y no se podrá agregar hasta que vuelva a estar disponible.</p></details>
   </div>
 </section>
@@ -784,7 +833,7 @@ footer{
       <div style="font-weight:1000">Contacto</div>
       <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn secondary" href="#contactanos">Contáctanos</a>
-        <a class="btn secondary" href="#arma">Premium Personalizable</a>
+        <a class="btn secondary" href="#arma">Resumen del pedido</a>
       </div>
       <div class="footerMuted" style="margin-top:12px;font-size:12px">© <span id="year"></span> SALIFRESH.</div>
     </div>
@@ -855,6 +904,13 @@ function waLink(message){
   return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 }
 function money(n){return "$" + Number(n).toFixed(0);}
+function kg(n){return Number(n).toFixed(2).replace(".00","") + " kg";}
+function unitLabel(item, qty){
+  if(qty <= 0) return "0";
+  const cleanUnit = item.unit.replace(/^1\s*/,"");
+  if(cleanUnit === "kg") return qty + " kg";
+  return qty + " " + cleanUnit + (qty > 1 && !cleanUnit.endsWith("s") ? "s" : "");
+}
 
 const iconMap = {
   platano:`<svg viewBox="0 0 64 64"><path d="M18 18c10 20 24 30 32 32-6 6-18 6-28-4S10 24 18 18Z" fill="rgba(215,179,95,.85)"/><path d="M18 18c10 20 24 30 32 32" stroke="rgba(31,107,79,.65)" stroke-width="3" stroke-linecap="round"/></svg>`,
@@ -924,7 +980,15 @@ const inventory = [
   {key:"aguacate",name:"Aguacate",unit:"1 kg",weightKg:1,premium:true,extra:30,status:"disponible",icon:"verdura"}
 ];
 
+const sizes = [
+  {key:"esencial",name:"Esencial",target:4,base:229,note:"Ideal para una compra práctica. Puedes ajustar la fruta desde el inventario."},
+  {key:"balance",name:"Balance",target:6,base:329,note:"Más variedad para casa u oficina. Selecciona los productos desde el inventario."},
+  {key:"premium",name:"Premium",target:8,base:449,note:"Mayor selección y combinación. Perfecta para personalizar con productos premium."}
+];
+
 let currentFilter = "todos";
+let selectedSize = sizes[1];
+let cart = {};
 
 function renderInventory(){
   const wrap = $("inventoryCatalog");
@@ -933,10 +997,22 @@ function renderInventory(){
   inventory
     .filter(item => currentFilter === "todos" || item.status === currentFilter)
     .forEach(item => {
+      const qty = cart[item.key] || 0;
+      const selectedWeight = item.weightKg * qty;
       const statusText = item.status === "disponible" ? "Disponible" : item.status === "temporada" ? "Temporada" : "Agotado";
-      const btn = item.status === "agotado"
-        ? `<button class="btn secondary" disabled style="opacity:.55;cursor:not-allowed">Agotado</button>`
-        : `<button class="btn dark" data-add="${item.key}">Agregar a mi box</button>`;
+      const control = item.status === "agotado"
+        ? `<button class="btn secondary full" disabled>Agotado</button>`
+        : `
+          <div class="qtyBox">
+            <div class="qtyLabel">Cantidad seleccionada</div>
+            <div class="qtyControl">
+              <button type="button" data-minus="${item.key}" aria-label="Quitar ${item.name}">−</button>
+              <span>${unitLabel(item, qty)}</span>
+              <button type="button" data-plus="${item.key}" aria-label="Agregar ${item.name}">+</button>
+            </div>
+            <div class="qtyLabel">Peso aprox: <b>${kg(selectedWeight)}</b></div>
+          </div>
+        `;
 
       const card = document.createElement("div");
       card.className = "invCard";
@@ -946,17 +1022,19 @@ function renderInventory(){
           <span class="status ${item.status}">${statusText}</span>
           <h4>${item.name}</h4>
           <div class="invMeta">${item.unit}${item.premium ? ` • <span class="gold">premium</span>` : ""}</div>
-          ${btn}
+          ${qty > 0 ? `<span class="selectedBadge">Agregado a tu box</span>` : ""}
+          ${control}
         </div>
       `;
       wrap.appendChild(card);
     });
 
-  document.querySelectorAll("[data-add]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      addToPremiumBox(btn.dataset.add);
-      $("arma").scrollIntoView({behavior:"smooth"});
-    });
+  document.querySelectorAll("[data-plus]").forEach(btn => {
+    btn.addEventListener("click", () => addToBox(btn.dataset.plus));
+  });
+
+  document.querySelectorAll("[data-minus]").forEach(btn => {
+    btn.addEventListener("click", () => removeFromBox(btn.dataset.minus));
   });
 }
 
@@ -969,20 +1047,12 @@ document.querySelectorAll(".filterBtn").forEach(btn => {
   });
 });
 
-const sizes = [
-  {key:"esencial",name:"Esencial",target:4,base:229,note:"Ideal para una compra práctica."},
-  {key:"balance",name:"Balance",target:6,base:329,note:"Más variedad para casa u oficina."},
-  {key:"premium",name:"Premium",target:8,base:449,note:"Mayor selección y combinación."}
-];
-
-let selectedSize = sizes[1];
-let cart = {};
-
 function renderSizes(){
   const wrap = $("sizes");
   wrap.innerHTML = "";
   sizes.forEach(size => {
     const chip = document.createElement("button");
+    chip.type = "button";
     chip.className = "chip" + (size.key === selectedSize.key ? " active" : "");
     chip.textContent = `${size.name} • ${money(size.base)}`;
     chip.addEventListener("click", () => {
@@ -995,51 +1065,28 @@ function renderSizes(){
   $("sizeNote").textContent = selectedSize.note;
 }
 
-function renderBuilder(){
-  const wrap = $("premiumBuilder");
-  wrap.innerHTML = "";
-
-  inventory.filter(i => i.status !== "agotado").forEach(item => {
-    const qty = cart[item.key] || 0;
-    const div = document.createElement("div");
-    div.className = "item";
-    div.innerHTML = `
-      <div class="itemTop">
-        <div class="itemLeft">
-          <div class="fruitIcon">${getIcon(item.icon)}</div>
-          <div>
-            <b>${item.name}</b><br>
-            <small>${item.unit}${item.premium ? " • premium" : ""}</small>
-          </div>
-        </div>
-      </div>
-      <div class="qty">
-        <button data-minus="${item.key}">-</button>
-        <span>${qty}</span>
-        <button data-plus="${item.key}">+</button>
-      </div>
-    `;
-    wrap.appendChild(div);
-  });
-
-  document.querySelectorAll("[data-plus]").forEach(btn => {
-    btn.addEventListener("click", () => addToPremiumBox(btn.dataset.plus));
-  });
-
-  document.querySelectorAll("[data-minus]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.minus;
-      cart[key] = Math.max(0, (cart[key] || 0) - 1);
-      if(cart[key] === 0) delete cart[key];
-      renderBuilder();
+document.querySelectorAll("[data-pick-size]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const size = sizes.find(s => s.key === btn.dataset.pickSize);
+    if(size){
+      selectedSize = size;
+      renderSizes();
       updateSummary();
-    });
+    }
+    $("inventario").scrollIntoView({behavior:"smooth"});
   });
+});
+
+function addToBox(key){
+  cart[key] = (cart[key] || 0) + 1;
+  renderInventory();
+  updateSummary();
 }
 
-function addToPremiumBox(key){
-  cart[key] = (cart[key] || 0) + 1;
-  renderBuilder();
+function removeFromBox(key){
+  cart[key] = Math.max(0, (cart[key] || 0) - 1);
+  if(cart[key] === 0) delete cart[key];
+  renderInventory();
   updateSummary();
 }
 
@@ -1057,18 +1104,20 @@ function updateSummary(){
     const qty = cart[key];
     if(!item || qty <= 0) return;
 
-    weight += item.weightKg * qty;
+    const itemWeight = item.weightKg * qty;
+    weight += itemWeight;
     extras += item.extra * qty;
 
     const li = document.createElement("li");
-    li.textContent = `${item.name} x${qty}`;
+    li.textContent = `${item.name}: ${unitLabel(item, qty)} • ${kg(itemWeight)} aprox.${item.premium ? " • premium" : ""}`;
     list.appendChild(li);
   });
 
-  $("sumWeight").textContent = weight.toFixed(2) + " kg";
+  $("sumWeight").textContent = kg(weight);
   $("sumBase").textContent = money(selectedSize.base);
   $("sumExtras").textContent = money(extras);
   $("sumTotal").textContent = money(selectedSize.base + extras);
+  $("emptyMsg").style.display = Object.keys(cart).length ? "none" : "block";
 }
 
 $("sendCustom").addEventListener("click", () => {
@@ -1078,12 +1127,15 @@ $("sendCustom").addEventListener("click", () => {
 
   const items = Object.keys(cart).map(key => {
     const item = inventory.find(i => i.key === key);
-    return `${item.name} x${cart[key]}`;
-  }).join(", ") || "Sin frutas seleccionadas";
+    const qty = cart[key];
+    const itemWeight = item.weightKg * qty;
+    return `${item.name}: ${unitLabel(item, qty)} (${kg(itemWeight)} aprox.)`;
+  }).join(", ") || "Sin productos seleccionados";
 
   const message =
 `Hola, soy ${name}. Quiero pedir una Box ${selectedSize.name}.
-Frutas: ${items}
+Productos: ${items}
+Peso seleccionado: ${$("sumWeight").textContent}
 Zona: ${zone}
 Dirección: ${address}
 Total estimado: ${$("sumTotal").textContent}`;
@@ -1095,7 +1147,6 @@ $("year").textContent = new Date().getFullYear();
 
 renderInventory();
 renderSizes();
-renderBuilder();
 updateSummary();
 </script>
 </body>
