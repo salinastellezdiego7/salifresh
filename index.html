@@ -482,7 +482,6 @@ footer{
 
     <div class="menuCTA">
       <a href="#inventario" class="btn dark menuNav">Armar mi box</a>
-      <a href="#arma" class="btn secondary menuNav">Ver resumen</a>
     </div>
   </div>
 </aside>
@@ -540,7 +539,6 @@ footer{
 
       <div class="heroActions">
         <a class="btn dark" href="#inventario">Armar mi box</a>
-        <a class="btn secondary" href="#arma">Ver resumen</a>
       </div>
 
       <div class="stats">
@@ -552,68 +550,80 @@ footer{
 
     <div class="heroArt">
       <div class="heroArtTop">
-        <b>Box SALIFRESH</b>
-        <span>Ilustración premium • fruta fresca</span>
+        <b>Selección SALIFRESH</b>
+        <span>Ilustración fresca • estilo premium</span>
       </div>
 
       <div class="heroSVG">
         <svg viewBox="0 0 880 520" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="bgHero" x1="0" x2="1">
-              <stop offset="0" stop-color="rgba(31,107,79,.14)"/>
-              <stop offset="1" stop-color="rgba(215,179,95,.22)"/>
+            <linearGradient id="freshBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".48" stop-color="rgba(240,209,132,.25)"/>
+              <stop offset="1" stop-color="rgba(31,107,79,.18)"/>
             </linearGradient>
-            <linearGradient id="boxG" x1="0" x2="1">
-              <stop offset="0" stop-color="#111"/>
-              <stop offset="1" stop-color="#2b2415"/>
+            <linearGradient id="trayG" x1="0" x2="1">
+              <stop offset="0" stop-color="#111111"/>
+              <stop offset="1" stop-color="#2a2418"/>
             </linearGradient>
-            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="rgba(2,6,23,.18)"/>
+            <linearGradient id="pearHeroG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b8e86a"/>
+              <stop offset=".55" stop-color="#2a8a64"/>
+              <stop offset="1" stop-color="#1f6b4f"/>
+            </linearGradient>
+            <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="rgba(2,6,23,.20)"/>
             </filter>
           </defs>
 
-          <rect width="880" height="520" fill="url(#bgHero)"/>
-          <circle cx="120" cy="90" r="80" fill="rgba(215,179,95,.22)"/>
-          <circle cx="760" cy="120" r="95" fill="rgba(31,107,79,.16)"/>
-          <circle cx="710" cy="430" r="110" fill="rgba(193,18,31,.08)"/>
+          <rect width="880" height="520" fill="url(#freshBg)"/>
+          <path d="M0 390 C160 320 250 430 400 360 C560 285 700 330 880 260 L880 520 L0 520 Z" fill="rgba(31,107,79,.10)"/>
+          <circle cx="120" cy="100" r="78" fill="rgba(215,179,95,.18)"/>
+          <circle cx="748" cy="110" r="96" fill="rgba(193,18,31,.07)"/>
+          <circle cx="720" cy="410" r="120" fill="rgba(31,107,79,.10)"/>
 
-          <g filter="url(#shadow)">
-            <path d="M160 270 L720 270 L650 455 L225 455 Z" fill="url(#boxG)"/>
-            <path d="M160 270 L245 185 L640 185 L720 270 Z" fill="#181818"/>
-            <path d="M245 185 L640 185 L720 270 L160 270 Z" fill="rgba(255,255,255,.06)"/>
-            <rect x="335" y="300" width="190" height="78" rx="18" fill="#fff"/>
-            <text x="365" y="348" font-size="30" font-weight="900" fill="#d7b35f" font-family="Arial">SALI</text>
-            <text x="438" y="348" font-size="30" font-weight="900" fill="#c1121f" font-family="Arial">FRESH</text>
+          <g filter="url(#softShadow)">
+            <path d="M150 315 C250 265 630 265 730 315 L680 440 C580 482 300 482 200 440 Z" fill="url(#trayG)"/>
+            <path d="M150 315 C250 365 630 365 730 315 C630 265 250 265 150 315Z" fill="#191919"/>
+            <path d="M220 345 C320 380 560 380 660 345" stroke="rgba(215,179,95,.72)" stroke-width="8" stroke-linecap="round"/>
+            <rect x="342" y="390" width="196" height="58" rx="18" fill="#fff"/>
+            <text x="374" y="427" font-size="28" font-weight="900" fill="#d7b35f" font-family="Arial">SALI</text>
+            <text x="444" y="427" font-size="28" font-weight="900" fill="#c1121f" font-family="Arial">FRESH</text>
           </g>
 
-          <g filter="url(#shadow)">
-            <circle cx="300" cy="190" r="54" fill="#c1121f"/>
-            <path d="M294 134c8-18 30-24 48-14-8 20-30 26-48 14Z" fill="#1f6b4f"/>
-            <path d="M278 160c-12 10-18 25-14 42" stroke="rgba(255,255,255,.45)" stroke-width="8" stroke-linecap="round"/>
+          <g filter="url(#softShadow)">
+            <path d="M438 110c-28 17-34 53-12 80 24 30 28 83-28 104 36 24 119 6 132-58 10-50-29-72-43-97-8-14-5-24 6-36Z" fill="url(#pearHeroG)"/>
+            <path d="M477 103c22-24 57-24 84-5-22 29-56 33-84 5Z" fill="#1f6b4f"/>
+            <path d="M462 131c-21 28-9 52 18 70 25 16 28 45 1 67" stroke="rgba(255,255,255,.58)" stroke-width="9" stroke-linecap="round"/>
           </g>
 
-          <g filter="url(#shadow)">
-            <path d="M455 112c-34 18-44 62-18 94 22 28 24 80-34 95 30 24 110 8 120-54 8-48-28-66-44-93-9-15-5-30 4-42Z" fill="#2a8a64"/>
-            <path d="M480 108c16-24 50-28 80-12-18 30-52 38-80 12Z" fill="#1f6b4f"/>
-            <path d="M465 130c-26 30-14 60 18 78 28 16 32 48 2 70" stroke="rgba(255,255,255,.52)" stroke-width="10" stroke-linecap="round"/>
+          <g filter="url(#softShadow)">
+            <circle cx="286" cy="218" r="54" fill="#c1121f"/>
+            <path d="M278 163c8-18 31-25 50-12-10 20-31 25-50 12Z" fill="#1f6b4f"/>
+            <path d="M262 190c-14 14-15 33-8 49" stroke="rgba(255,255,255,.45)" stroke-width="8" stroke-linecap="round"/>
           </g>
 
-          <g filter="url(#shadow)">
-            <circle cx="575" cy="205" r="27" fill="#7b4bb3"/>
-            <circle cx="620" cy="205" r="27" fill="#7b4bb3"/>
-            <circle cx="598" cy="245" r="27" fill="#7b4bb3"/>
-            <circle cx="552" cy="250" r="27" fill="#7b4bb3"/>
-            <path d="M586 148c28 2 45 18 54 38-32 5-58-8-54-38Z" fill="#1f6b4f"/>
+          <g filter="url(#softShadow)">
+            <circle cx="604" cy="230" r="27" fill="#7b4bb3"/>
+            <circle cx="651" cy="230" r="27" fill="#7b4bb3"/>
+            <circle cx="628" cy="272" r="27" fill="#7b4bb3"/>
+            <circle cx="580" cy="276" r="27" fill="#7b4bb3"/>
+            <path d="M614 176c30 3 48 20 56 42-34 4-60-11-56-42Z" fill="#1f6b4f"/>
           </g>
 
-          <g filter="url(#shadow)">
-            <path d="M200 240c42 95 130 130 210 143-40 40-126 38-190-24S158 265 200 240Z" fill="#f0d184"/>
-            <path d="M200 240c42 95 130 130 210 143" stroke="#1f6b4f" stroke-width="8" stroke-linecap="round"/>
+          <g filter="url(#softShadow)">
+            <path d="M190 268c52 96 150 119 236 118-37 49-136 55-209-7-70-60-76-99-27-111Z" fill="#f0d184"/>
+            <path d="M190 268c52 96 150 119 236 118" stroke="#1f6b4f" stroke-width="8" stroke-linecap="round"/>
           </g>
 
-          <g filter="url(#shadow)">
-            <path d="M660 235c70 16 105 54 88 102-18 50-95 64-156 22 46-20 64-68 68-124Z" fill="#f4b942"/>
-            <path d="M673 232c20-20 52-22 78-8-18 24-52 30-78 8Z" fill="#1f6b4f"/>
+          <g filter="url(#softShadow)">
+            <path d="M694 255c67 23 96 68 73 115-24 50-101 54-157 7 49-15 72-60 84-122Z" fill="#f4b942"/>
+            <path d="M705 251c24-18 57-16 80 2-22 23-56 25-80-2Z" fill="#1f6b4f"/>
+          </g>
+
+          <g opacity=".9">
+            <text x="72" y="455" font-size="18" font-weight="900" fill="#1f6b4f" font-family="Arial">Fruta fresca</text>
+            <text x="72" y="482" font-size="18" font-weight="900" fill="#6a4e12" font-family="Arial">Entrega rápida</text>
           </g>
         </svg>
       </div>
@@ -690,7 +700,7 @@ footer{
           <li>Mandarina</li>
           <li>Melón <span class="gold">cambiable</span></li>
         </ul>
-        <div class="productActions"><button class="btn ghost" data-pick-size="esencial">Elegir esta box</button></div>
+        <div class="productActions"><button class="btn ghost" data-order-box="esencial">Elegir esta box</button></div>
       </div>
 
       <div class="card">
@@ -705,7 +715,7 @@ footer{
           <li>Melón <span class="gold">cambiable</span></li>
           <li>Pera <span class="gold">opcional</span></li>
         </ul>
-        <div class="productActions"><button class="btn ghost" data-pick-size="balance">Elegir esta box</button></div>
+        <div class="productActions"><button class="btn ghost" data-order-box="balance">Elegir esta box</button></div>
       </div>
 
       <div class="card">
@@ -718,7 +728,7 @@ footer{
           <li>Elige kilos o cantidades</li>
           <li>Confirma por WhatsApp</li>
         </ul>
-        <div class="productActions"><button class="btn dark" data-pick-size="premium">Personalizar</button></div>
+        <div class="productActions"><button class="btn dark" data-scroll-inventory>Personalizar</button></div>
       </div>
     </div>
   </div>
@@ -732,7 +742,7 @@ footer{
 
     <div class="checkoutGrid">
       <div class="panel">
-        <div class="pill">TAMAÑO DE BOX</div>
+        <div class="pill">PESO Y PRECIO BASE</div>
         <div class="sizes" id="sizes"></div>
         <div class="notice" id="sizeNote"></div>
         <div class="notice">
@@ -744,11 +754,9 @@ footer{
       <div class="panel">
         <div class="pill">TU PEDIDO</div>
         <div class="summary">
-          <div class="row"><div>Tamaño</div><span id="sumSize">—</span></div>
-          <div class="row"><div>Peso objetivo</div><span id="sumTarget">—</span></div>
+          <div class="row"><div>Peso de box</div><span id="sumSize">—</span></div>
           <div class="row"><div>Peso seleccionado</div><span id="sumWeight">0 kg</span></div>
-          <div class="row"><div>Base</div><span id="sumBase">$0</span></div>
-          <div class="row"><div>Extras <span class="gold">premium</span></div><span id="sumExtras">$0</span></div>
+          <div class="row"><div>Ajuste <span class="gold">premium</span></div><span id="sumExtras">$0</span></div>
           <hr style="border:none;border-top:1px solid var(--border)">
           <div class="row" style="font-size:18px"><div>Total estimado</div><span id="sumTotal">$0</span></div>
 
@@ -833,7 +841,6 @@ footer{
       <div style="font-weight:1000">Contacto</div>
       <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn secondary" href="#contactanos">Contáctanos</a>
-        <a class="btn secondary" href="#arma">Resumen del pedido</a>
       </div>
       <div class="footerMuted" style="margin-top:12px;font-size:12px">© <span id="year"></span> SALIFRESH.</div>
     </div>
@@ -963,31 +970,20 @@ const inventory = [
   {key:"tuna",name:"Tuna",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"temporada",icon:"kiwi"},
   {key:"pitahaya",name:"Pitahaya",unit:"1 pieza",weightKg:.5,premium:true,extra:40,status:"temporada",icon:"fresa"},
   {key:"coco",name:"Coco",unit:"1 pieza",weightKg:1,premium:true,extra:20,status:"disponible",icon:"coco"},
-  {key:"pepino",name:"Pepino",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"jicama",name:"Jícama",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"zanahoria",name:"Zanahoria",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"apio",name:"Apio",unit:"1 pieza",weightKg:.5,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"lechuga_romana",name:"Lechuga romana",unit:"1 pieza",weightKg:.5,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"lechuga_orejona",name:"Lechuga orejona",unit:"1 pieza",weightKg:.5,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"espinaca",name:"Espinaca",unit:"1 manojo",weightKg:.3,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"brocoli",name:"Brócoli",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"coliflor",name:"Coliflor",unit:"1 pieza",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"calabaza",name:"Calabaza",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"chayote",name:"Chayote",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"nopales",name:"Nopales",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"verdura"},
-  {key:"tomate",name:"Tomate",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"manzana"},
-  {key:"cebolla",name:"Cebolla",unit:"1 kg",weightKg:1,premium:false,extra:0,status:"disponible",icon:"mandarina"},
-  {key:"aguacate",name:"Aguacate",unit:"1 kg",weightKg:1,premium:true,extra:30,status:"disponible",icon:"verdura"}
 ];
 
 const sizes = [
-  {key:"esencial",name:"Esencial",target:4,base:229,note:"Ideal para una compra práctica. Puedes ajustar la fruta desde el inventario."},
-  {key:"balance",name:"Balance",target:6,base:329,note:"Más variedad para casa u oficina. Selecciona los productos desde el inventario."},
-  {key:"premium",name:"Premium",target:8,base:449,note:"Mayor selección y combinación. Perfecta para personalizar con productos premium."}
+  {key:"kg5",name:"5 kg",target:5,base:275,note:"Base de $275 para una box personalizada de 5 kg."},
+  {key:"kg10",name:"10 kg",target:10,base:550,note:"Base de $550 para una box personalizada de 10 kg."},
+  {key:"kg15",name:"15 kg",target:15,base:825,note:"Base de $825 para una box personalizada de 15 kg."},
+  {key:"kg20",name:"20 kg",target:20,base:1100,note:"Base de $1,100 para una box personalizada de 20 kg."},
+  {key:"kg25",name:"25 kg",target:25,base:1375,note:"Base de $1,375 para una box personalizada de 25 kg."},
+  {key:"kg30",name:"30 kg",target:30,base:1650,note:"Base de $1,650 para una box personalizada de 30 kg."},
+  {key:"kg35",name:"35 kg",target:35,base:1925,note:"Base de $1,925 para una box personalizada de 35 kg."}
 ];
 
 let currentFilter = "todos";
-let selectedSize = sizes[1];
+let selectedSize = sizes[0];
 let cart = {};
 
 function renderInventory(){
@@ -1054,7 +1050,7 @@ function renderSizes(){
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = "chip" + (size.key === selectedSize.key ? " active" : "");
-    chip.textContent = `${size.name} • ${money(size.base)}`;
+    chip.textContent = `${size.name} • base ${money(size.base)}`;
     chip.addEventListener("click", () => {
       selectedSize = size;
       renderSizes();
@@ -1065,14 +1061,37 @@ function renderSizes(){
   $("sizeNote").textContent = selectedSize.note;
 }
 
-document.querySelectorAll("[data-pick-size]").forEach(btn => {
+const boxPresets = {
+  esencial:{
+    name:"Box Esencial",
+    price:229,
+    items:["Plátano","Manzana","Mandarina","Melón cambiable"]
+  },
+  balance:{
+    name:"Box Balance",
+    price:329,
+    items:["Plátano","Manzana","Mandarina","Melón cambiable","Pera opcional"]
+  }
+};
+
+document.querySelectorAll("[data-order-box]").forEach(btn => {
   btn.addEventListener("click", () => {
-    const size = sizes.find(s => s.key === btn.dataset.pickSize);
-    if(size){
-      selectedSize = size;
-      renderSizes();
-      updateSummary();
-    }
+    const box = boxPresets[btn.dataset.orderBox];
+    if(!box) return;
+
+    const message =
+`Hola, quiero pedir la ${box.name}.
+Precio: ${money(box.price)}
+Incluye: ${box.items.join(", ")}
+Zona: Metepec / Toluca Centro
+¿Me puedes confirmar disponibilidad y entrega?`;
+
+    window.open(waLink(message), "_blank");
+  });
+});
+
+document.querySelectorAll("[data-scroll-inventory]").forEach(btn => {
+  btn.addEventListener("click", () => {
     $("inventario").scrollIntoView({behavior:"smooth"});
   });
 });
@@ -1091,8 +1110,7 @@ function removeFromBox(key){
 }
 
 function updateSummary(){
-  $("sumSize").textContent = selectedSize.name;
-  $("sumTarget").textContent = selectedSize.target + " kg";
+  $("sumSize").textContent = `${selectedSize.name} • base ${money(selectedSize.base)}`;
 
   let weight = 0;
   let extras = 0;
@@ -1114,7 +1132,6 @@ function updateSummary(){
   });
 
   $("sumWeight").textContent = kg(weight);
-  $("sumBase").textContent = money(selectedSize.base);
   $("sumExtras").textContent = money(extras);
   $("sumTotal").textContent = money(selectedSize.base + extras);
   $("emptyMsg").style.display = Object.keys(cart).length ? "none" : "block";
@@ -1133,7 +1150,7 @@ $("sendCustom").addEventListener("click", () => {
   }).join(", ") || "Sin productos seleccionados";
 
   const message =
-`Hola, soy ${name}. Quiero pedir una Box ${selectedSize.name}.
+`Hola, soy ${name}. Quiero pedir una box personalizada de ${selectedSize.name}.
 Productos: ${items}
 Peso seleccionado: ${$("sumWeight").textContent}
 Zona: ${zone}
